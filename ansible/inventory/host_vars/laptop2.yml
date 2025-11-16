@@ -1,0 +1,18 @@
+etckeeper_remote_url: 'ssh://git@bitbucket.org/egor-tensin/etc-tensin-laptop2.git'
+
+docker_enable_service: false
+
+wg_private_key: yGhRM5wIe3+2TBRSYyoCyWHhSyjkVednyxVZdeemJX4=
+wg_addr4: '{{ wg_prefix4 }}.2/24'
+wg_addr6: '{{ wg_prefix6 }}.2/48'
+wg_peers:
+  - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
+    preshared_key: /LdlHLsI4YXFgaRc6nFhI6xWc1zVw+Ct3ASA1ThUsZ8=
+    endpoint: vpn.tensin.name:443
+    allowed_ips: ['{{ wg_prefix4 }}.0/24', '{{ wg_prefix6 }}.0/48']
+    persistent_keepalive: 25
+wg_peers_ru:
+  - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
+    preshared_key: wD2zpF415fBg9XXuoPVJIB4jcjE4kIk+kVC1NF2aLFI=
+    endpoint: vpn-ru.tensin.name:443
+    persistent_keepalive: 25

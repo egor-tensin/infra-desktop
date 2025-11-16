@@ -1,0 +1,20 @@
+- name: Get host processor
+  ansible.builtin.setup:
+    gather_subset:
+      - processor
+
+- name: Install Intel microcode package
+  become: true
+  ansible.builtin.package:
+    name: intel-ucode
+    state: present
+  when: |
+    'GenuineIntel' in ansible_facts["processor"]
+
+- name: Install AMD microcode package
+  become: true
+  ansible.builtin.package:
+    name: amd-ucode
+    state: present
+  when: |
+    'AuthenticAMD' in ansible_facts["processor"]

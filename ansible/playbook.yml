@@ -1,0 +1,52 @@
+- name: General maintenance
+  hosts: all
+  gather_facts: false
+
+  vars_files:
+    - vars/packages.yml
+
+  roles:
+    - tensin.infra.pacman
+    - microcode
+    - tensin.infra.etckeeper
+
+    - name: tensin.infra.pacman_install
+      vars:
+        pacman_packages: '{{ packages_basic }}'
+
+    - sudo
+    - name: tensin.infra.etckeeper_commit
+      vars:
+        etckeeper_commit_paths: ['sudoers.d/{{ ansible_user }}']
+        etckeeper_commit_msg: 'sudo: configure user {{ ansible_user }}'
+
+    - tensin.infra.sshd
+    - name: tensin.infra.etckeeper_commit
+      vars:
+        etckeeper_commit_paths:
+          - ssh/sshd_config
+          - systemd/system/multi-user.target.wants/sshd.service
+        etckeeper_commit_msg: 'sshd: configure'
+
+    - tensin.infra.wireguard
+    - name: tensin.infra.wireguard
+      vars:
+        wg_name: vpn_ger
+        wg_tunnel_everything: true
+        wg_autoconnect: false
+    - name: tensin.infra.wireguard
+      vars:
+        wg_name: vpn_rus
+        wg_tunnel_everything: true
+        wg_autoconnect: false
+        wg_peers: '{{ wg_peers_ru }}'
+
+    - tensin.infra.docker
+    - name: tensin.infra.etckeeper_commit
+      vars:
+        etckeeper_commit_paths:
+          - systemd/system/sockets.target.wants/docker.socket
+          - systemd/system/multi-user.target.wants/docker.service
+        etckeeper_commit_msg: 'systemd: configure Docker'
+
+    - tensin.infra.my_dotfiles

@@ -1,0 +1,10 @@
+my_name: Egor Tensin
+my_email: egor@tensin.name
+
+etckeeper_git_name: '{{ my_name }}'
+etckeeper_git_email: '{{ my_email }}'
+
+wg_backend: NetworkManager
+wg_prefix4: '192.168.205'
+wg_prefix6: 'fd9d:bc11:4021::192.168.205'
+wg_name: vpn
