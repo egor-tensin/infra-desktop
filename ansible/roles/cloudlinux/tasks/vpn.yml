@@ -1,0 +1,26 @@
+- name: Install dependencies
+  become: true
+  ansible.builtin.package:
+    name: networkmanager-openconnect
+    state: present
+
+- name: Configure connections
+  become: true
+  ansible.builtin.template:
+    src: openconnect.nmconnection.j2
+    dest: '/etc/NetworkManager/system-connections/{{ item.id }}.nmconnection'
+    owner: root
+    group: root
+    mode: 0600
+  notify: cloudlinux_vpn_reload
+  vars:
+    vpn_username: etensin
+  loop:
+    - id: cl_old
+      uuid: 406bb1fb-d2af-424d-a95a-f125ea065ae4
+      name: CloudLinux
+      endpoint: https://vpn-atm.corp.cloudlinux.com/
+    - id: cl_new
+      uuid: b834b4b9-c5d5-46c5-911b-e5a451c75f04
+      name: CloudLinux (new)
+      endpoint: https://vpn01.atm.svcs.io/

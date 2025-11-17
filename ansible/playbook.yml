@@ -50,3 +50,5 @@
         etckeeper_commit_msg: 'systemd: configure Docker'
 
     - tensin.infra.my_dotfiles
+
+    - cloudlinux
