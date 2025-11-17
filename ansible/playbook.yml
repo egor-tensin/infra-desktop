@@ -1,4 +1,4 @@
-- name: General maintenance
+- name: Basic configuration
   hosts: all
   gather_facts: false
 
@@ -49,6 +49,32 @@
           - systemd/system/multi-user.target.wants/docker.service
         etckeeper_commit_msg: 'systemd: configure Docker'
 
-    - tensin.infra.my_dotfiles
+- name: Time synchronization on laptops
+  hosts: laptops
+  gather_facts: false
+  roles:
+    - chrony
+    - name: tensin.infra.etckeeper_commit
+      vars:
+        etckeeper_commit_paths:
+          - systemd/system/multi-user.target.wants/chronyd.service
+          - systemd/system/multi-user.target.wants/systemd-timesyncd.service
+        etckeeper_commit_msg: 'systemd: configure chrony'
 
+- name: Time synchronization on PCs
+  hosts: pcs
+  gather_facts: false
+  roles:
+    - systemd_timesyncd
+    - name: tensin.infra.etckeeper_commit
+      vars:
+        etckeeper_commit_paths:
+          - systemd/system/multi-user.target.wants/systemd-timesyncd.service
+        etckeeper_commit_msg: 'systemd: configure systemd-timesyncd'
+
+- name: Set up workflows
+  hosts: all
+  gather_facts: false
+  roles:
+    - tensin.infra.my_dotfiles
     - cloudlinux

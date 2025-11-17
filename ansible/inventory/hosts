@@ -2,5 +2,12 @@ laptop2	ansible_host=192.168.205.2
 pc2	ansible_host=192.168.205.18
 laptop3	ansible_host=192.168.205.21
 
+[laptops]
+laptop2
+laptop3
+
+[pcs]
+pc2
+
 [all:vars]
 ansible_user=egor
