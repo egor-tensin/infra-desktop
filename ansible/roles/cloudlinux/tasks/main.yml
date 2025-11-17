@@ -1,2 +1,5 @@
 - name: Set up VPN
   ansible.builtin.import_tasks: vpn.yml
+
+- name: Set up dotfiles
+  ansible.builtin.import_tasks: dotfiles.yml
