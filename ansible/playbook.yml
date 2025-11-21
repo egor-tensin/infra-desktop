@@ -14,6 +14,14 @@
       vars:
         pacman_packages: '{{ packages_basic }}'
 
+    - tensin.infra.paccache
+    - name: tensin.infra.etckeeper_commit
+      vars:
+        etckeeper_commit_paths:
+          - systemd/system/multi-user.target.wants/paccache.service
+          - systemd/system/timers.target.wants/paccache.timer
+        etckeeper_commit_msg: 'configure paccache'
+
     - sudo
     - name: tensin.infra.etckeeper_commit
       vars:
