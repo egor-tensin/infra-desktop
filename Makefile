@@ -28,4 +28,4 @@ config: configure
 
 .PHONY: maintenance
 maintenance:
-	@$(MAKE) configure
+	@$(MAKE) configure 'LIMIT=$(call escape,$(LIMIT))'
