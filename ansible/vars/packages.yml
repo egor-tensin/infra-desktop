@@ -20,6 +20,7 @@ packages_basic:
   - nmap
   - nnn
   - rclone
+  - rsync
   - screen
   - speedtest-cli
   - sshfs
@@ -35,6 +36,7 @@ packages_basic:
   - wget
   - which
   - whois
+  - xclip
   - xsel
   - yt-dlp
   - zip
