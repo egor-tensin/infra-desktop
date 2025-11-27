@@ -1,7 +1,8 @@
 - name: Pull dotfiles
-  ansible.builtin.git:
+  tensin.infra.safe_git:
     repo: ssh://git@bitbucket.org/egor-tensin/cl-home.git
     dest: ~/workspace/cl/home
+    version: master
     accept_hostkey: true
   register: dotfiles
 
