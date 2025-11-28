@@ -88,3 +88,9 @@
   roles:
     - tensin.infra.my_dotfiles
     - cloudlinux
+
+- name: Set up the file dump
+  hosts: laptop2
+  gather_facts: false
+  roles:
+    - dump

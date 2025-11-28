@@ -1,0 +1,36 @@
+- name: Configure fstab
+  become: true
+  ansible.posix.mount:
+    state: mounted
+    path: /mnt/dump
+    src: UUID=43d98372-316e-4c79-97c5-bbde24c6c948
+    fstype: ext4
+    opts: defaults,noatime,nodiratime
+    boot: true
+    passno: '2'
+  notify: dump_configured
+
+- name: Docker depends on /mnt/dump
+  become: true
+  block:
+    - name: Create override directory
+      ansible.builtin.file:
+        path: /etc/systemd/system/docker.service.d
+        state: directory
+        owner: root
+        group: root
+        mode: '755'
+
+    - name: Create override file
+      ansible.builtin.template:
+        src: dump_depends.conf.j2
+        dest: /etc/systemd/system/docker.service.d/dump_depends.conf
+        owner: root
+        group: root
+        mode: '644'
+      notify:
+        - dump_configured
+        - systemd_reload
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers
