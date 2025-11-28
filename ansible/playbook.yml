@@ -57,6 +57,8 @@
           - systemd/system/multi-user.target.wants/docker.service
         etckeeper_commit_msg: 'systemd: configure Docker'
 
+    - lightdm_autologin
+
 - name: Time synchronization on laptops
   hosts: laptops
   gather_facts: false

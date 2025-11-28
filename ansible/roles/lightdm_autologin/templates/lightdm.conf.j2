@@ -1,0 +1,6 @@
+{{ ansible_managed | comment }}
+
+[Seat:*]
+autologin-user={{ ansible_user }}
+autologin-user-timeout=0
+pam-service=lightdm-autologin

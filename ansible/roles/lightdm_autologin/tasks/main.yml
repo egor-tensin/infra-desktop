@@ -1,0 +1,39 @@
+- name: Add group autologin
+  become: true
+  ansible.builtin.group:
+    name: autologin
+    system: true
+  notify: groups_configured
+
+- name: Add user to group autologin
+  become: true
+  ansible.builtin.user:
+    append: true
+    groups: [autologin]
+    name: '{{ ansible_user }}'
+  notify: groups_configured
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers
+
+- name: Create LightDM override directory
+  become: true
+  ansible.builtin.file:
+    path: /etc/lightdm/lightdm.conf.d
+    state: directory
+    owner: root
+    group: root
+    mode: '755'
+
+- name: Create LightDM override file
+  become: true
+  ansible.builtin.template:
+    src: lightdm.conf.j2
+    dest: /etc/lightdm/lightdm.conf.d/autologin.conf
+    owner: root
+    group: root
+    mode: '644'
+  notify: lightdm_configured
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers

@@ -1,0 +1,27 @@
+- name: etckeeper commit
+  become: true
+  tensin.infra.etckeeper_commit:
+    msg: 'add {{ ansible_user }} to group autologin'
+    allowlist:
+      - group
+      - group-
+      - gshadow
+      - gshadow-
+    skip_no_changes: true
+  listen: groups_configured
+
+- name: etckeeper commit
+  become: true
+  tensin.infra.etckeeper_commit:
+    msg: 'lightdm: enable autologin'
+    allowlist:
+      - lightdm/lightdm.conf.d/
+      - lightdm/lightdm.conf.d/autologin.conf
+    skip_no_changes: true
+  listen: lightdm_configured
+
+- name: Reboot if necessary
+  become: true
+  ansible.builtin.reboot:
+    reboot_timeout: 180
+  listen: lightdm_configured
