@@ -82,15 +82,16 @@
           - systemd/system/multi-user.target.wants/systemd-timesyncd.service
         etckeeper_commit_msg: 'systemd: configure systemd-timesyncd'
 
-- name: Set up workflows
-  hosts: all
-  gather_facts: false
-  roles:
-    - tensin.infra.my_dotfiles
-    - cloudlinux
-
 - name: Set up the file dump
   hosts: laptop2
   gather_facts: false
   roles:
     - dump
+
+- name: Set up workflows
+  hosts: all
+  gather_facts: false
+  roles:
+    - tensin.infra.my_dotfiles
+    - tensin.infra.my_workspace
+    - cloudlinux

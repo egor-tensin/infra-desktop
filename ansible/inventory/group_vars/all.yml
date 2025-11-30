@@ -8,3 +8,6 @@ wg_backend: NetworkManager
 wg_prefix4: '192.168.205'
 wg_prefix6: 'fd9d:bc11:4021::192.168.205'
 wg_name: vpn
+
+my_workspace_git_name: '{{ my_name }}'
+my_workspace_git_email: '{{ my_email }}'
