@@ -1,6 +1,6 @@
 [connection]
-id={{ item.name }}
-uuid={{ item.uuid }}
+id={{ vpn_name }}
+uuid={{ vpn_uuid }}
 type=vpn
 autoconnect=false
 
@@ -11,7 +11,7 @@ certsigs-flags=0
 cookie-flags=2
 disable_udp=no
 enable_csd_trojan=no
-gateway={{ item.endpoint }}
+gateway={{ vpn_endpoint }}
 gateway-flags=2
 gwcert-flags=2
 lasthost-flags=0
@@ -26,7 +26,7 @@ service-type=org.freedesktop.NetworkManager.openconnect
 [vpn-secrets]
 autoconnect=yes
 form:main:username={{ vpn_username }}
-lasthost={{ item.endpoint }}
+lasthost={{ vpn_endpoint }}
 save_passwords=no
 
 [ipv4]

@@ -14,6 +14,9 @@
     mode: 0600
   notify: cloudlinux_vpn_reload
   vars:
+    vpn_name: '{{ item.name }}'
+    vpn_uuid: '{{ item.uuid }}'
+    vpn_endpoint: '{{ item.endpoint }}'
     vpn_username: etensin
   loop:
     - id: cl_old
