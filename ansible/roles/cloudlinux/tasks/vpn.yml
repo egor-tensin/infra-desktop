@@ -4,16 +4,6 @@
     name: networkmanager-openconnect
     state: present
 
-- name: Remove connection files
-  become: true
-  ansible.builtin.file:
-    state: absent
-    dest: '/etc/NetworkManager/system-connections/{{ item }}.nmconnection'
-  notify: cloudlinux_vpn_reload
-  loop:
-    - cl_old
-    - cl_new
-
 - name: Configure connection
   become: true
   ansible.builtin.template:
