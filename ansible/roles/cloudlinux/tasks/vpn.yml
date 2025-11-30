@@ -4,26 +4,27 @@
     name: networkmanager-openconnect
     state: present
 
-- name: Configure connections
+- name: Remove connection files
+  become: true
+  ansible.builtin.file:
+    state: absent
+    dest: '/etc/NetworkManager/system-connections/{{ item }}.nmconnection'
+  notify: cloudlinux_vpn_reload
+  loop:
+    - cl_old
+    - cl_new
+
+- name: Configure connection
   become: true
   ansible.builtin.template:
     src: openconnect.nmconnection.j2
-    dest: '/etc/NetworkManager/system-connections/{{ item.id }}.nmconnection'
+    dest: /etc/NetworkManager/system-connections/cl.nmconnection
     owner: root
     group: root
     mode: 0600
   notify: cloudlinux_vpn_reload
   vars:
-    vpn_name: '{{ item.name }}'
-    vpn_uuid: '{{ item.uuid }}'
-    vpn_endpoint: '{{ item.endpoint }}'
+    vpn_name: CloudLinux
+    vpn_uuid: b834b4b9-c5d5-46c5-911b-e5a451c75f04
+    vpn_endpoint: https://vpn01.atm.svcs.io/
     vpn_username: etensin
-  loop:
-    - id: cl_old
-      uuid: 406bb1fb-d2af-424d-a95a-f125ea065ae4
-      name: CloudLinux
-      endpoint: https://vpn-atm.corp.cloudlinux.com/
-    - id: cl_new
-      uuid: b834b4b9-c5d5-46c5-911b-e5a451c75f04
-      name: CloudLinux (new)
-      endpoint: https://vpn01.atm.svcs.io/
