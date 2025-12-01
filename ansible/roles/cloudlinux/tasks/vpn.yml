@@ -18,3 +18,6 @@
     vpn_uuid: b834b4b9-c5d5-46c5-911b-e5a451c75f04
     vpn_endpoint: https://vpn01.atm.svcs.io/
     vpn_username: etensin
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers
