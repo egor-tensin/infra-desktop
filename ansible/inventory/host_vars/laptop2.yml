@@ -6,7 +6,6 @@ docker_enable_service: true
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-laptop2.git'
     name: server
-    version: main
 
 wg_private_key: yGhRM5wIe3+2TBRSYyoCyWHhSyjkVednyxVZdeemJX4=
 wg_addr4: '{{ wg_prefix4 }}.2/24'
