@@ -9,6 +9,7 @@
     - tensin.infra.pacman
     - microcode
     - tensin.infra.etckeeper
+    - lts_kernel
 
     - name: tensin.infra.reflector
     - name: tensin.infra.etckeeper_commit

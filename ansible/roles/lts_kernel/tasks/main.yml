@@ -1,0 +1,45 @@
+- name: Install packages
+  become: true
+  ansible.builtin.package:
+    name: [linux-lts, linux-lts-headers]
+    state: present
+
+- name: etckeeper commit
+  become: true
+  tensin.infra.etckeeper_commit:
+    msg: install LTS kernel
+    allowlist:
+      - mkinitcpio.d/linux-lts.preset
+    skip_no_changes: true
+
+- name: Generate GRUB config
+  become: true
+  ansible.builtin.command: grub-mkconfig
+  changed_when: false
+  register: grub_mkconfig
+
+- name: Update grub.cfg
+  become: true
+  ansible.builtin.copy:
+    content: '{{ grub_mkconfig.stdout }}'
+    dest: /boot/grub/grub.cfg
+    owner: root
+    group: root
+    mode: '755'
+  register: grub_cfg
+
+- name: Reboot
+  become: true
+  ansible.builtin.reboot:
+  when: grub_cfg.changed
+
+- name: Check if running LTS already
+  ansible.builtin.command: uname -r
+  changed_when: false
+  register: uname
+
+- name: Fail if not running LTS
+  when: |
+    '-lts' not in uname.stdout
+  ansible.builtin.fail:
+    msg: Supposed to be running LTS already
