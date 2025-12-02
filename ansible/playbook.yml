@@ -7,16 +7,23 @@
 
   roles:
     - tensin.infra.pacman
-    - microcode
     - tensin.infra.etckeeper
+
     - lts_kernel
+    - microcode
+
     - reflector
+    - paccache
+
     - name: tensin.infra.pacman_install
       vars:
         pacman_packages: '{{ packages_basic }}'
-    - paccache
+
     - sudo
     - sshd
+    - docker
+
+    - lightdm_autologin
 
     - tensin.infra.wireguard
     - name: tensin.infra.wireguard
@@ -30,9 +37,6 @@
         wg_tunnel_everything: true
         wg_autoconnect: false
         wg_peers: '{{ wg_peers_ru }}'
-
-    - docker
-    - lightdm_autologin
 
 - name: Time synchronization on laptops
   hosts: laptops
