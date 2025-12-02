@@ -1,4 +1,4 @@
 collections:
   - source: https://github.com/egor-tensin/infra-ansible.git
     type: git
-    version: f9cceff900beab0696f1b7cb761eae7699c3954c
+    version: a5850a2cd6e9d4151d72d6f96658d62ff7f38248
