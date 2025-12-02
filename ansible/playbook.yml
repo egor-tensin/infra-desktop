@@ -10,40 +10,13 @@
     - microcode
     - tensin.infra.etckeeper
     - lts_kernel
-
-    - name: tensin.infra.reflector
-    - name: tensin.infra.etckeeper_commit
-      vars:
-        etckeeper_commit_allowlist:
-          - systemd/system/multi-user.target.wants/reflector.service
-          - systemd/system/timers.target.wants/reflector.timer
-        etckeeper_commit_msg: 'configure reflector'
-
+    - reflector
     - name: tensin.infra.pacman_install
       vars:
         pacman_packages: '{{ packages_basic }}'
-
-    - tensin.infra.paccache
-    - name: tensin.infra.etckeeper_commit
-      vars:
-        etckeeper_commit_allowlist:
-          - systemd/system/multi-user.target.wants/paccache.service
-          - systemd/system/timers.target.wants/paccache.timer
-        etckeeper_commit_msg: 'configure paccache'
-
+    - paccache
     - sudo
-    - name: tensin.infra.etckeeper_commit
-      vars:
-        etckeeper_commit_allowlist: ['sudoers.d/{{ ansible_user }}']
-        etckeeper_commit_msg: 'sudo: configure user {{ ansible_user }}'
-
-    - tensin.infra.sshd
-    - name: tensin.infra.etckeeper_commit
-      vars:
-        etckeeper_commit_allowlist:
-          - ssh/sshd_config
-          - systemd/system/multi-user.target.wants/sshd.service
-        etckeeper_commit_msg: 'sshd: configure'
+    - sshd
 
     - tensin.infra.wireguard
     - name: tensin.infra.wireguard
@@ -58,14 +31,7 @@
         wg_autoconnect: false
         wg_peers: '{{ wg_peers_ru }}'
 
-    - tensin.infra.docker
-    - name: tensin.infra.etckeeper_commit
-      vars:
-        etckeeper_commit_allowlist:
-          - systemd/system/sockets.target.wants/docker.socket
-          - systemd/system/multi-user.target.wants/docker.service
-        etckeeper_commit_msg: 'systemd: configure Docker'
-
+    - docker
     - lightdm_autologin
 
 - name: Time synchronization on laptops
@@ -73,23 +39,12 @@
   gather_facts: false
   roles:
     - chrony
-    - name: tensin.infra.etckeeper_commit
-      vars:
-        etckeeper_commit_allowlist:
-          - systemd/system/multi-user.target.wants/chronyd.service
-          - systemd/system/multi-user.target.wants/systemd-timesyncd.service
-        etckeeper_commit_msg: 'systemd: configure chrony'
 
 - name: Time synchronization on PCs
   hosts: pcs
   gather_facts: false
   roles:
     - systemd_timesyncd
-    - name: tensin.infra.etckeeper_commit
-      vars:
-        etckeeper_commit_allowlist:
-          - systemd/system/multi-user.target.wants/systemd-timesyncd.service
-        etckeeper_commit_msg: 'systemd: configure systemd-timesyncd'
 
 - name: Set up the file dump
   hosts: laptop2

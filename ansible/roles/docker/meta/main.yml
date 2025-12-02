@@ -1,0 +1,8 @@
+dependencies:
+  - role: tensin.infra.docker
+  - role: tensin.infra.etckeeper_commit
+    vars:
+      etckeeper_commit_msg: 'systemd: configure Docker'
+      etckeeper_commit_allowlist:
+        - systemd/system/sockets.target.wants/docker.socket
+        - systemd/system/multi-user.target.wants/docker.service

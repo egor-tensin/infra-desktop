@@ -1,0 +1,8 @@
+dependencies:
+  - role: tensin.infra.reflector
+  - role: tensin.infra.etckeeper_commit
+    vars:
+      etckeeper_commit_msg: 'configure reflector'
+      etckeeper_commit_allowlist:
+        - systemd/system/multi-user.target.wants/reflector.service
+        - systemd/system/timers.target.wants/reflector.timer

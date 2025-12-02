@@ -7,3 +7,11 @@
     group: root
     mode: '440'
     validate: 'visudo -cf %s'
+  register: sudoers_file
+
+- name: etckeeper commit
+  when: sudoers_file.changed
+  become: true
+  tensin.infra.etckeeper_commit:
+    msg: 'sudo: configure user {{ ansible_user }}'
+    allowlist: ['sudoers.d/{{ ansible_user }}']

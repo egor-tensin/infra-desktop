@@ -1,0 +1,8 @@
+dependencies:
+  - role: tensin.infra.sshd
+  - role: tensin.infra.etckeeper_commit
+    vars:
+      etckeeper_commit_msg: 'sshd: configure'
+      etckeeper_commit_allowlist:
+        - ssh/sshd_config
+        - systemd/system/multi-user.target.wants/sshd.service

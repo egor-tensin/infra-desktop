@@ -3,14 +3,15 @@
   ansible.builtin.package:
     name: [linux-lts, linux-lts-headers]
     state: present
+  register: install
 
 - name: etckeeper commit
+  when: install.changed
   become: true
   tensin.infra.etckeeper_commit:
     msg: install LTS kernel
     allowlist:
       - mkinitcpio.d/linux-lts.preset
-    skip_no_changes: true
 
 - name: Generate GRUB config
   become: true
