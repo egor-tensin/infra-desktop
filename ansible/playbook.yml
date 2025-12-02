@@ -25,7 +25,10 @@
 
     - lightdm_autologin
 
-    - tensin.infra.wireguard
+    - name: tensin.infra.wireguard
+      vars:
+        wg_name: vpn
+        wg_autoconnect: true
     - name: tensin.infra.wireguard
       vars:
         wg_name: vpn_ger
