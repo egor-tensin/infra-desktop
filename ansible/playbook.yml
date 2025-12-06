@@ -66,3 +66,13 @@
     - tensin.infra.my_dotfiles
     - tensin.infra.my_workspace
     - cloudlinux
+
+- name: Upgrade AUR packages
+  hosts: all
+  gather_facts: false
+  tasks:
+    - kewlfft.aur.aur:
+        name: '{{ aur_packages }}'
+        state: latest
+        use: yay
+        aur_only: true

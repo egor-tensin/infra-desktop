@@ -16,3 +16,5 @@ wg_peers_ru:
     preshared_key: FER0tTq0hnPqFk5TtvsEUp8YKIYgRdQ++m4RFPij5lE=
     endpoint: vpn-ru.tensin.name:443
     persistent_keepalive: 25
+
+aur_packages: '{{ aur_packages_basic + aur_packages_desktop }}'

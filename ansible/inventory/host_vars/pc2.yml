@@ -14,3 +14,9 @@ wg_peers_ru:
     preshared_key: CL9xiWX3CtFaCPESpmCQblLubv8ZXjfNAW5O0H4M30w=
     endpoint: vpn-ru.tensin.name:443
     persistent_keepalive: 25
+
+aur_packages_this:
+  - grub-reboot-into-windows
+  - k380-function-keys-conf
+
+aur_packages: '{{ aur_packages_basic + aur_packages_desktop + aur_packages_this }}'
