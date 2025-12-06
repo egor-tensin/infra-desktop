@@ -1,0 +1,8 @@
+- name: Fail if wrong flavour
+  ansible.builtin.fail:
+    msg: NTP backend must be either 'systemd-timesyncd' or 'chrony'
+  when: |
+    ntp_backend not in ['systemd-timesyncd', 'chrony']
+
+- name: 'Set up using backend {{ ntp_backend }}'
+  ansible.builtin.include_tasks: '{{ ntp_backend }}.yml'

@@ -19,6 +19,8 @@ etckeeper_ignored_paths:
 
 kernel_flavour: lts
 
+ntp_backend: chrony
+
 my_workspace_git_name: '{{ my_name }}'
 my_workspace_git_email: '{{ my_email }}'
 

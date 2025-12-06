@@ -10,7 +10,7 @@
     name: systemd-timesyncd
     enabled: false
     state: stopped
-  notify: etckeeper_commit
+  notify: etckeeper_chrony
 
 - name: Enable & start chrony
   become: true
@@ -18,7 +18,7 @@
     name: chronyd
     enabled: true
     state: started
-  notify: etckeeper_commit
+  notify: etckeeper_chrony
 
 - name: Run handlers if neccessary
   ansible.builtin.meta: flush_handlers

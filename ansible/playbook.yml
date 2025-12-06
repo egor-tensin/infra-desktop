@@ -19,6 +19,7 @@
       vars:
         pacman_packages: '{{ packages_basic }}'
 
+    - ntp
     - sudo
     - sshd
     - docker
@@ -40,18 +41,6 @@
         wg_tunnel_everything: true
         wg_autoconnect: false
         wg_peers: '{{ wg_peers_ru }}'
-
-- name: Time synchronization on laptops
-  hosts: laptops
-  gather_facts: false
-  roles:
-    - chrony
-
-- name: Time synchronization on PCs
-  hosts: pcs
-  gather_facts: false
-  roles:
-    - systemd_timesyncd
 
 - name: Set up the file dump
   hosts: laptop2
