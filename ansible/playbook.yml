@@ -9,7 +9,7 @@
     - tensin.infra.pacman
     - tensin.infra.etckeeper
 
-    - lts_kernel
+    - kernel
     - microcode
 
     - reflector

@@ -17,6 +17,8 @@ etckeeper_ignored_paths:
   # I frequently run something to rate my mirrors.
   - /pacman.d/mirrorlist
 
+kernel_flavour: lts
+
 my_workspace_git_name: '{{ my_name }}'
 my_workspace_git_email: '{{ my_email }}'
 

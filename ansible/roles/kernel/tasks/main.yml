@@ -1,0 +1,93 @@
+- name: Get distro
+  ansible.builtin.setup:
+    gather_subset:
+      - distribution
+
+- name: Fail unless Arch Linux
+  ansible.builtin.fail:
+    msg: Only works on Arch Linux
+  when: |
+    ansible_facts['distribution'] != 'Archlinux'
+
+- name: Fail if wrong flavour
+  ansible.builtin.fail:
+    msg: Kernel flavour must be either 'latest' or 'lts'
+  when: |
+    kernel_flavour not in ['latest', 'lts']
+
+- vars:
+    packages: |
+      {{
+        {
+          'latest': ['linux', 'linux-headers'],
+          'lts': ['linux-lts', 'linux-lts-headers'],
+        }[kernel_flavour]
+      }}
+    mkinitcpio_files: |
+      {{
+        {
+          'latest': ['mkinitcpio.d/linux.preset'],
+          'lts': ['mkinitcpio.d/linux-lts.preset']
+        }[kernel_flavour]
+      }}
+    kernel_image: |
+      {{
+        {
+          'latest': '/boot/vmlinuz-linux',
+          'lts': '/boot/vmlinuz-linux-lts',
+        }[kernel_flavour]
+      }}
+  block:
+    - name: Install packages
+      become: true
+      ansible.builtin.package:
+        name: '{{ packages }}'
+        state: present
+      register: install
+
+    - name: etckeeper commit
+      when: install.changed
+      become: true
+      tensin.infra.etckeeper_commit:
+        msg: install a kernel
+        allowlist: '{{ mkinitcpio_files }}'
+
+    - name: Set default GRUB entry
+      become: true
+      community.general.ini_file:
+        create: false
+        ignore_spaces: true
+        no_extra_spaces: true
+        path: /etc/default/grub
+        option: GRUB_TOP_LEVEL
+        value: '{{ kernel_image }}'
+      register: grub_default
+
+    - name: etckeeper commit
+      when: grub_default.changed
+      become: true
+      tensin.infra.etckeeper_commit:
+        msg: configure GRUB
+        allowlist:
+          - default/grub
+
+    - name: Generate GRUB config
+      become: true
+      ansible.builtin.command: grub-mkconfig
+      changed_when: false
+      register: grub_mkconfig
+
+    - name: Update grub.cfg
+      become: true
+      ansible.builtin.copy:
+        content: '{{ grub_mkconfig.stdout }}'
+        dest: /boot/grub/grub.cfg
+        owner: root
+        group: root
+        mode: '755'
+      register: grub_cfg
+
+    - name: Reboot
+      become: true
+      ansible.builtin.reboot:
+      when: grub_cfg.changed

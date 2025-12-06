@@ -2,6 +2,10 @@ etckeeper_remote_url: 'ssh://git@bitbucket.org/egor-tensin/etc-tensin-laptop3.gi
 
 docker_enable_service: false
 
+# My stupid fucking headphone set randomly disconnects on LTS kernel.
+# TODO: switch to LTS once I replace it.
+kernel_flavour: latest
+
 wg_private_key: ABDxabgiXbiq7G+Leg+h3k7eGF4WHPv0alFDSMuUA10=
 wg_addr4: '{{ wg_prefix4 }}.21/24'
 wg_addr6: '{{ wg_prefix6 }}.21/48'
