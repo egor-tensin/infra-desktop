@@ -8,22 +8,17 @@
   roles:
     - tensin.infra.pacman
     - tensin.infra.etckeeper
-
     - kernel
     - microcode
-
     - reflector
     - paccache
-
     - name: tensin.infra.pacman_install
       vars:
         pacman_packages: '{{ packages_basic }}'
-
     - ntp
     - sudo
     - sshd
     - docker
-
     - lightdm_autologin
 
     - name: tensin.infra.wireguard
