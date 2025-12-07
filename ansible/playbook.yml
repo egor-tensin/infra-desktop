@@ -62,6 +62,7 @@
         state: latest
         use: yay
         aur_only: true
+        extra_args: --cleanafter
 
     - name: etckeeper commit
       become: true
