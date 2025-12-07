@@ -12,6 +12,7 @@
     - microcode
     - reflector
     - paccache
+    - makepkg
     - name: tensin.infra.pacman_install
       vars:
         pacman_packages: '{{ packages_basic }}'
