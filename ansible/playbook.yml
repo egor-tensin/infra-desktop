@@ -55,8 +55,17 @@
   hosts: all
   gather_facts: false
   tasks:
-    - kewlfft.aur.aur:
+    - name: Run yay
+      kewlfft.aur.aur:
         name: '{{ aur_packages }}'
         state: latest
         use: yay
         aur_only: true
+
+    - name: etckeeper commit
+      become: true
+      tensin.infra.etckeeper_commit:
+        msg: enable linux-status
+        allowlist:
+          - systemd/system/multi-user.target.wants/linux-status.service
+        skip_no_changes: true

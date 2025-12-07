@@ -22,4 +22,4 @@ wg_peers_ru:
     endpoint: vpn-ru.tensin.name:443
     persistent_keepalive: 25
 
-aur_packages: '{{ aur_packages_basic }}'
+aur_packages: "{{ aur_packages_basic + ['linux-status'] }}"
