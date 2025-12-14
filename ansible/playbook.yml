@@ -63,6 +63,9 @@
         use: yay
         aur_only: true
         extra_args: --cleanafter
+      # AUR connection fail a bit too frequently:
+      retries: 3
+      delay: 3
 
     - name: etckeeper commit
       become: true
