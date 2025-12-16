@@ -1,0 +1,29 @@
+- name: etckeeper commit
+  become: true
+  tensin.infra.etckeeper_commit:
+    msg: 'systemd: configure libvirt'
+    allowlist:
+      - group
+      - group-
+      - gshadow
+      - gshadow-
+      - libvirt/network.conf
+      - systemd/system/multi-user.target.wants/libvirtd.service
+      - systemd/system/sockets.target.wants/virtlockd-admin.socket
+      - systemd/system/sockets.target.wants/virtlockd.socket
+      - systemd/system/sockets.target.wants/virtlogd-admin.socket
+      - systemd/system/sockets.target.wants/virtlogd.socket
+  listen: libvirt_etckeeper
+
+- name: Collect service facts
+  ansible.builtin.service_facts:
+  listen: libvirt_restart
+
+- name: Restart libvirt service
+  become: true
+  when: |
+    'libvirtd.service' in ansible_facts.services and ansible_facts.services['libvirtd.service'].state == 'running'
+  ansible.builtin.systemd_service:
+    name: libvirtd
+    state: restarted
+  listen: libvirt_restart

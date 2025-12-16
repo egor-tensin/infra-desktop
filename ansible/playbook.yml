@@ -38,6 +38,8 @@
         wg_autoconnect: false
         wg_peers: '{{ wg_peers_ru }}'
 
+    - libvirt
+
 - name: Set up the file dump
   hosts: laptop2
   gather_facts: false
