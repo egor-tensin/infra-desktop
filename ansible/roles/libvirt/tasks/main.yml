@@ -7,6 +7,17 @@
       - dnsmasq
     state: present
 
+- name: Add user to group libvirt
+  become: true
+  ansible.builtin.user:
+    append: true
+    groups: [libvirt]
+    name: '{{ ansible_user }}'
+  notify: libvirt_groups
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers
+
 - name: Enable & start libvirt
   become: true
   ansible.builtin.systemd_service:
@@ -26,14 +37,6 @@
   notify:
     - libvirt_etckeeper
     - libvirt_restart
-
-- name: Add user to group libvirt
-  become: true
-  ansible.builtin.user:
-    append: true
-    groups: [libvirt]
-    name: '{{ ansible_user }}'
-  notify: libvirt_etckeeper
 
 - name: Run handlers if neccessary
   ansible.builtin.meta: flush_handlers
