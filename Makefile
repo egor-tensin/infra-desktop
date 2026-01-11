@@ -29,3 +29,12 @@ config: configure
 .PHONY: maintenance
 maintenance:
 	@$(MAKE) configure 'LIMIT=$(call escape,$(LIMIT))'
+
+.PHONY: reboot
+reboot:
+	@echo
+	@echo -----------------------------------------------------------------
+	@echo Rebooting hosts
+	@echo -----------------------------------------------------------------
+	@cd -- ansible/ && \
+		ansible --become --limit '$(call escape,$(LIMIT))' -m reboot all
