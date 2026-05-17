@@ -38,6 +38,7 @@
         wg_peers: '{{ wg_peers_ru }}'
 
     - libvirt
+    - cups
 
 - name: Set up the file dump
   hosts: laptop2

@@ -1,0 +1,52 @@
+# https://wiki.archlinux.org/title/Avahi#Hostname_resolution
+- name: Install nss-mdns
+  become: true
+  ansible.builtin.package:
+    name: nss-mdns
+    state: present
+
+# As of May '26, without this, automatic printer discovery didn't work normally
+# (in some weird way, where the printer would be discovered, but its status
+# won't be queued properly, etc.; who cares, it's obviously an insane tech to
+# begin with).
+- name: Fix nsswitch.conf
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/nsswitch.conf
+    regexp: 'hosts\:'
+    line: 'hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns'
+    state: present
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Install CUPS & Avahi
+  become: true
+  ansible.builtin.package:
+    name:
+      - cups
+      - cups-pdf
+      - avahi
+    state: present
+
+- name: Enable & start CUPS
+  become: true
+  ansible.builtin.systemd_service:
+    name: cups
+    enabled: true
+    state: started
+
+- name: Enable & start Avahi
+  become: true
+  ansible.builtin.systemd_service:
+    name: avahi-daemon
+    enabled: true
+    state: started
+  register: avahi_state
+
+- name: Restart CUPS if necessary
+  become: true
+  ansible.builtin.systemd_service:
+    name: cups
+    state: restarted
+  when: avahi_state.changed
