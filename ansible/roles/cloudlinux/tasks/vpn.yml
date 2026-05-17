@@ -11,7 +11,7 @@
     dest: /etc/NetworkManager/system-connections/cl.nmconnection
     owner: root
     group: root
-    mode: 0600
+    mode: '0600'
   notify: cloudlinux_vpn_reload
   vars:
     vpn_name: CloudLinux
