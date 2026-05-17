@@ -1,28 +1,3 @@
-- name: etckeeper commit
-  become: true
-  tensin.infra.etckeeper_commit:
-    msg: 'add {{ ansible_user }} to group libvirt'
-    allowlist:
-      - group
-      - group-
-      - gshadow
-      - gshadow-
-  listen: libvirt_groups
-
-- name: etckeeper commit
-  become: true
-  tensin.infra.etckeeper_commit:
-    msg: 'systemd: configure libvirt'
-    allowlist:
-      - libvirt/network.conf
-      - systemd/system/multi-user.target.wants/libvirtd.service
-      - systemd/system/sockets.target.wants/virtlockd-admin.socket
-      - systemd/system/sockets.target.wants/virtlockd.socket
-      - systemd/system/sockets.target.wants/virtlogd-admin.socket
-      - systemd/system/sockets.target.wants/virtlogd.socket
-    skip_no_changes: true
-  listen: libvirt_etckeeper
-
 - name: Collect service facts
   ansible.builtin.service_facts:
   listen: libvirt_restart

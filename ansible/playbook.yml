@@ -7,19 +7,18 @@
 
   roles:
     - tensin.infra.pacman
-    - tensin.infra.etckeeper
     - kernel
     - microcode
-    - reflector
-    - paccache
+    - tensin.infra.reflector
+    - tensin.infra.paccache
     - makepkg
     - name: tensin.infra.pacman_install
       vars:
         pacman_packages: '{{ packages_basic }}'
     - ntp
     - sudo
-    - sshd
-    - docker
+    - tensin.infra.sshd
+    - tensin.infra.docker
     - lightdm_autologin
 
     - name: tensin.infra.wireguard
@@ -68,11 +67,3 @@
       # AUR connection fail a bit too frequently:
       retries: 3
       delay: 3
-
-    - name: etckeeper commit
-      become: true
-      tensin.infra.etckeeper_commit:
-        msg: enable linux-status
-        allowlist:
-          - systemd/system/multi-user.target.wants/linux-status.service
-        skip_no_changes: true

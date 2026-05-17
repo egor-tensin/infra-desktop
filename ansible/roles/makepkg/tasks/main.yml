@@ -6,13 +6,3 @@
     owner: root
     group: root
     mode: '644'
-  register: debug_conf
-
-- name: etckeeper commit
-  become: true
-  tensin.infra.etckeeper_commit:
-    msg: |
-      makepkg: disable debug packages
-    allowlist:
-      - makepkg.conf.d/debug.conf
-  when: debug_conf.changed

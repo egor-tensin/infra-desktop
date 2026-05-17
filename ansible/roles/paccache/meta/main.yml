@@ -1,8 +1,0 @@
-dependencies:
-  - role: tensin.infra.paccache
-  - role: tensin.infra.etckeeper_commit
-    vars:
-      etckeeper_commit_msg: 'configure paccache'
-      etckeeper_commit_allowlist:
-        - systemd/system/multi-user.target.wants/paccache.service
-        - systemd/system/timers.target.wants/paccache.timer

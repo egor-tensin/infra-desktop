@@ -8,7 +8,6 @@
     opts: defaults,noatime,nodiratime
     boot: true
     passno: '2'
-  notify: dump_configured
 
 - name: Docker depends on /mnt/dump
   become: true
@@ -29,7 +28,6 @@
         group: root
         mode: '644'
       notify:
-        - dump_configured
         - systemd_reload
 
 - name: Run handlers if neccessary

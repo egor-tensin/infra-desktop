@@ -1,5 +1,3 @@
-etckeeper_remote_url: 'ssh://git@bitbucket.org/egor-tensin/etc-tensin-pc2.git'
-
 ntp_backend: systemd-timesyncd
 
 wg_private_key: uEF02PPfVCDYkLDxpuJzupGMbtBt+6vmj0dKKWABd0c=

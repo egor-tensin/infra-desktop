@@ -1,5 +1,3 @@
-etckeeper_remote_url: 'ssh://git@bitbucket.org/egor-tensin/etc-tensin-laptop2.git'
-
 # Keep it enabled for Jellyfin, qBittorrent, etc.
 docker_enable_service: true
 

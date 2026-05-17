@@ -4,7 +4,3 @@
     name: systemd-timesyncd
     enabled: true
     state: started
-  notify: etckeeper_systemd_timesyncd
-
-- name: Run handlers if neccessary
-  ansible.builtin.meta: flush_handlers

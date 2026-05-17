@@ -24,7 +24,6 @@
     name: libvirtd
     enabled: true
     state: started
-  notify: libvirt_etckeeper
 
 - name: Fix networking for libvirt
   become: true
@@ -35,7 +34,6 @@
     option: firewall_backend
     value: '"iptables"'
   notify:
-    - libvirt_etckeeper
     - libvirt_restart
 
 - name: Run handlers if neccessary

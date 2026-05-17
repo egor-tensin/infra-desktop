@@ -1,22 +1,6 @@
 my_name: Egor Tensin
 my_email: egor@tensin.name
 
-etckeeper_git_name: '{{ my_name }}'
-etckeeper_git_email: '{{ my_email }}'
-
-etckeeper_ignored_paths:
-  # My resolv.conf is typically managed, by either systemd or NetworkManager.
-  - /resolv.conf
-  # This is just a stupid systemd file.
-  - /.updated
-  # I really don't need all the Wi-Fi networks.
-  - /NetworkManager/system-connections/
-  # I'm unsure about this; but it does make pacman upgrades much easier - I
-  # don't need to account for /etc/pacman.d/gnupg suddenly having changes.
-  - /pacman.d/gnupg/
-  # I frequently run something to rate my mirrors.
-  - /pacman.d/mirrorlist
-
 kernel_flavour: lts
 
 ntp_backend: chrony

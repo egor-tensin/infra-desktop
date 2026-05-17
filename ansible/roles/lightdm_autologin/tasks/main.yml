@@ -3,7 +3,6 @@
   ansible.builtin.group:
     name: autologin
     system: true
-  notify: groups_configured
 
 - name: Add user to group autologin
   become: true
@@ -11,10 +10,6 @@
     append: true
     groups: [autologin]
     name: '{{ ansible_user }}'
-  notify: groups_configured
-
-- name: Run handlers if neccessary
-  ansible.builtin.meta: flush_handlers
 
 - name: Create LightDM override directory
   become: true
