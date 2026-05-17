@@ -33,6 +33,9 @@
     path: /etc/libvirt/network.conf
     option: firewall_backend
     value: '"iptables"'
+    owner: root
+    group: root
+    mode: '0644'
   notify:
     - libvirt_restart
 
