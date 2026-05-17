@@ -13,10 +13,6 @@
     append: true
     groups: [libvirt]
     name: '{{ ansible_user }}'
-  notify: libvirt_groups
-
-- name: Run handlers if neccessary
-  ansible.builtin.meta: flush_handlers
 
 - name: Enable & start libvirt
   become: true
