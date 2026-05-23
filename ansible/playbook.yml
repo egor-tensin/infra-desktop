@@ -11,6 +11,9 @@
     - microcode
     - tensin.infra.reflector
     - tensin.infra.paccache
+    - name: tensin.infra.journald
+      vars:
+        journald_log_level: info
     - makepkg
     - name: tensin.infra.pacman_install
       vars:
