@@ -23,13 +23,6 @@
           'lts': ['linux-lts', 'linux-lts-headers'],
         }[kernel_flavour]
       }}
-    mkinitcpio_files: |
-      {{
-        {
-          'latest': ['mkinitcpio.d/linux.preset'],
-          'lts': ['mkinitcpio.d/linux-lts.preset']
-        }[kernel_flavour]
-      }}
     kernel_image: |
       {{
         {
