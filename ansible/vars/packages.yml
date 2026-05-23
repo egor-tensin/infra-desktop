@@ -1,4 +1,4 @@
-packages_basic:
+packages:
   # Basic stuff, doesn't require configuration:
   - 7zip
   - atool
@@ -64,19 +64,31 @@ packages_basic:
   - github-cli
   - graphviz
   - lcov
+  - linux
+  - linux-firmware
+  - linux-lts
+  - linux-headers
+  - linux-lts-headers
+  - llvm
   - make
   - npm
   - patch
   - perf
   - pkgconf
   - pyenv
+  - python-black
+  - python-flake8
   - python-matplotlib
+  - python-pylint
+  - python-pylint-venv
   - python-pytest
   - rbenv
   - rpm-tools
+  - rst2pdf
   - ruby-build
   - strace
   - terraform
+  - tk
   - valgrind
   - wdiff
 
@@ -92,3 +104,63 @@ packages_basic:
   - networkmanager-openconnect
   - networkmanager-openvpn
   - wireguard-tools
+
+  # Applications
+
+  # Containers/VMs
+  - docker
+  - docker-buildx
+  - docker-compose
+  - libvirt
+  - virtualbox
+  - virtualbox-host-modules-arch
+  - virtualbox-host-modules-lts
+  - virtualbox-guest-iso
+
+  # System utilities
+  - alsa-utils
+  - blueman
+  - bluez
+  - bluez-utils
+  - dnsmasq
+  - dosfstools
+  - efibootmgr
+  - gparted
+  - nfs-utils
+  - ntfs-3g
+  - pacman-contrib
+  - parted
+  - usbutils
+
+  # GUI
+  - adapta-gtk-theme
+  - exo
+  - firefox
+  - garcon
+  - gcr
+  - gimp
+  - gnome-backgrounds
+  - grub
+  - gvfs-smb
+  - gvfs-wsdd
+  - keepassxc
+  - lightdm
+  - lightdm-settings
+  - lightdm-slick-greeter
+  - mate-backgrounds
+  - network-manager-applet
+  - obs-studio
+  - os-prober
+  - papirus-icon-theme
+  - pavucontrol
+  - pipewire-pulse
+  - qbittorrent
+  - qemu-desktop
+  - ristretto
+  - telegram-desktop
+  - virt-manager
+  - vlc
+  - vlc-plugin-ffmpeg
+  - vlc-plugins-extra
+  - xfce4
+  - xfce4-goodies

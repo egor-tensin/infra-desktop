@@ -17,7 +17,7 @@
     - makepkg
     - name: tensin.infra.pacman_install
       vars:
-        pacman_packages: '{{ packages_basic }}'
+        pacman_packages: '{{ packages }}'
     - ntp
     - sudo
     - tensin.infra.sshd
