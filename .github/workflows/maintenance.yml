@@ -1,4 +1,4 @@
-name: infra-metal
+name: Maintenance
 
 on:
   workflow_dispatch:
