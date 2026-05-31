@@ -29,6 +29,13 @@
       - avahi
     state: present
 
+- name: Enable & start CUPS
+  become: true
+  ansible.builtin.systemd_service:
+    name: cups
+    enabled: true
+    state: started
+
 - name: Enable & start Avahi
   become: true
   ansible.builtin.systemd_service:
@@ -59,10 +66,3 @@
     - AccessLog
     - ErrorLog
     - PageLog
-
-- name: Enable & start CUPS
-  become: true
-  ansible.builtin.systemd_service:
-    name: cups
-    enabled: true
-    state: started
