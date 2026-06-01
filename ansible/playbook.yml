@@ -42,6 +42,7 @@
 
     - libvirt
     - cups
+    - mime
 
 - name: Set up the file dump
   hosts: laptop2
