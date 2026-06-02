@@ -29,8 +29,7 @@
 
     - name: Configure MIME type
       community.general.ini_file:
-        path: >-
-          {{ [lookup('env', 'HOME'), '.config/mimeapps.list'] | path_join }}
+        path: ~/.config/mimeapps.list
         section: Default Applications
         option: '{{ type }}'
         value: '{{ app }}.desktop'
