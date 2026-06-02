@@ -66,3 +66,6 @@
     - AccessLog
     - ErrorLog
     - PageLog
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers
