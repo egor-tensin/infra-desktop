@@ -11,6 +11,7 @@ on:
 
 jobs:
   maintenance:
+    name: Maintenance
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
