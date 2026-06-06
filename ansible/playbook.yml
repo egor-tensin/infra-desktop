@@ -9,8 +9,6 @@
     - tensin.infra.pacman
     - kernel
     - microcode
-    - tensin.infra.reflector
-    - tensin.infra.paccache
     - name: tensin.infra.journald
       vars:
         journald_log_level: info
@@ -22,7 +20,6 @@
     - sudo
     - tensin.infra.sshd
     - tensin.infra.docker
-    - lightdm_autologin
 
     - name: tensin.infra.wireguard
       vars:
@@ -40,6 +37,13 @@
         wg_autoconnect: false
         wg_peers: '{{ wg_peers_ru }}'
 
+- name: Advanced configuration
+  hosts: all
+  gather_facts: false
+  roles:
+    - tensin.infra.reflector
+    - tensin.infra.paccache
+    - lightdm_autologin
     - libvirt
     - cups
     - mime
