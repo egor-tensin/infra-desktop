@@ -20,3 +20,7 @@ aur_packages_this:
   - k380-function-keys-conf
 
 aur_packages: '{{ aur_packages_basic + aur_packages_desktop + aur_packages_this }}'
+
+pacman_ignore_packages:
+  # https://gitlab.xfce.org/xfce/xfdesktop/-/work_items/458
+  - libxfce4windowing
