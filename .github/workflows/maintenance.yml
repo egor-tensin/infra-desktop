@@ -29,11 +29,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: '${{ secrets.SSH_KEY }}'
-      - name: Configure git
-        run: |
-          # See https://github.com/actions/checkout#push-a-commit-using-the-built-in-token
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Run maintenance
         run: |
           make maintenance 'LIMIT=${{ inputs.limit }}'
