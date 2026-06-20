@@ -1,4 +1,4 @@
-- name: Basic configuration
+- name: Maintenance
   hosts: all
   gather_facts: false
 
@@ -6,20 +6,31 @@
     - vars/packages.yml
 
   roles:
-    - tensin.infra.pacman
-    - kernel
-    - microcode
-    - name: tensin.infra.journald
-      vars:
-        journald_log_level: info
     - makepkg
+    - tensin.infra.pacman
+    - tensin.infra.reflector
+    - tensin.infra.paccache
+    - aur
     - name: tensin.infra.pacman_install
       vars:
         pacman_packages: '{{ packages }}'
-    - ntp
-    - sudo
+
+    - kernel
+    - microcode
+
     - tensin.infra.sshd
+    - name: tensin.infra.journald
+      vars:
+        journald_log_level: info
+    - sudo
+    - ntp
+
     - tensin.infra.docker
+    - libvirt
+
+    - lightdm_autologin
+    - cups
+    - mime
 
     - name: tensin.infra.wireguard
       vars:
@@ -37,16 +48,7 @@
         wg_autoconnect: false
         wg_peers: '{{ wg_peers_ru }}'
 
-- name: Advanced configuration
-  hosts: all
-  gather_facts: false
-  roles:
-    - tensin.infra.reflector
-    - tensin.infra.paccache
-    - lightdm_autologin
-    - libvirt
-    - cups
-    - mime
+    - cloudlinux
 
 - name: Set up the file dump
   hosts: laptop2
@@ -60,19 +62,3 @@
   roles:
     - tensin.infra.my_dotfiles
     - tensin.infra.my_workspace
-    - cloudlinux
-
-- name: Upgrade AUR packages
-  hosts: all
-  gather_facts: false
-  tasks:
-    - name: Run yay
-      kewlfft.aur.aur:
-        name: '{{ aur_packages }}'
-        state: latest
-        use: yay
-        aur_only: true
-        extra_args: --cleanafter
-      # AUR connection fail a bit too frequently:
-      retries: 3
-      delay: 3
