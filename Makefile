@@ -3,9 +3,6 @@ include prelude.mk
 .PHONY: all
 all: maintenance
 
-.PHONY: DO
-DO:
-
 .PHONY: deps
 deps:
 	@echo
