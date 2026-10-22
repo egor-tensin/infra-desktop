@@ -8,7 +8,7 @@
 # As of May '26, without this, automatic printer discovery didn't work normally
 # (in some weird way, where the printer would be discovered, but its status
 # won't be queued properly, etc.; who cares, it's obviously an insane tech to
-# begin with).
+# begin with), see the link above.
 - name: Fix nsswitch.conf
   become: true
   ansible.builtin.lineinfile:
