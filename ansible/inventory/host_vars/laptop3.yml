@@ -4,16 +4,16 @@ docker_enable_service: false
 # TODO: switch to LTS once I replace it.
 kernel_flavour: latest
 
-wg_private_key: ABDxabgiXbiq7G+Leg+h3k7eGF4WHPv0alFDSMuUA10=
-wg_addr4: '{{ wg_prefix4 }}.21/24'
-wg_addr6: '{{ wg_prefix6 }}.21/48'
-wg_peers:
+wireguard_private_key: ABDxabgiXbiq7G+Leg+h3k7eGF4WHPv0alFDSMuUA10=
+wireguard_addr4: '{{ wireguard_prefix4 }}.21/24'
+wireguard_addr6: '{{ wireguard_prefix6 }}.21/48'
+wireguard_peers:
   - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
     preshared_key: rzr4K1HA7gE5ai0A7hu0k+voGMCyehqWtzNi6YG6hvo=
     endpoint: vpn.tensin.name:443
-    allowed_ips: ['{{ wg_prefix4 }}.0/24', '{{ wg_prefix6 }}.0/48']
+    allowed_ips: ['{{ wireguard_prefix4 }}.0/24', '{{ wireguard_prefix6 }}.0/48']
     persistent_keepalive: 25
-wg_peers_ru:
+wireguard_peers_ru:
   - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
     preshared_key: FER0tTq0hnPqFk5TtvsEUp8YKIYgRdQ++m4RFPij5lE=
     endpoint: vpn-ru.tensin.name:443

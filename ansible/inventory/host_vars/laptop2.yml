@@ -5,16 +5,16 @@ my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-laptop2.git'
     name: server
 
-wg_private_key: yGhRM5wIe3+2TBRSYyoCyWHhSyjkVednyxVZdeemJX4=
-wg_addr4: '{{ wg_prefix4 }}.2/24'
-wg_addr6: '{{ wg_prefix6 }}.2/48'
-wg_peers:
+wireguard_private_key: yGhRM5wIe3+2TBRSYyoCyWHhSyjkVednyxVZdeemJX4=
+wireguard_addr4: '{{ wireguard_prefix4 }}.2/24'
+wireguard_addr6: '{{ wireguard_prefix6 }}.2/48'
+wireguard_peers:
   - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
     preshared_key: /LdlHLsI4YXFgaRc6nFhI6xWc1zVw+Ct3ASA1ThUsZ8=
     endpoint: vpn.tensin.name:443
-    allowed_ips: ['{{ wg_prefix4 }}.0/24', '{{ wg_prefix6 }}.0/48']
+    allowed_ips: ['{{ wireguard_prefix4 }}.0/24', '{{ wireguard_prefix6 }}.0/48']
     persistent_keepalive: 25
-wg_peers_ru:
+wireguard_peers_ru:
   - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
     preshared_key: wD2zpF415fBg9XXuoPVJIB4jcjE4kIk+kVC1NF2aLFI=
     endpoint: vpn-ru.tensin.name:443

@@ -15,6 +15,6 @@ desktop_manager_impl: ly
 my_workspace_git_name: '{{ my_name }}'
 my_workspace_git_email: '{{ my_email }}'
 
-wg_backend: NetworkManager
-wg_prefix4: '192.168.205'
-wg_prefix6: 'fd9d:bc11:4021::192.168.205'
+wireguard_backend: NetworkManager
+wireguard_prefix4: '192.168.205'
+wireguard_prefix6: 'fd9d:bc11:4021::192.168.205'
