@@ -7,10 +7,10 @@ sudo_env:
   - SSH_AUTH_SOCK
 
 kernel_flavour: lts
-
 journald_log_level: info
-
 ntp_backend: chrony
+desktop_impl: labwc
+desktop_manager_impl: ly
 
 my_workspace_git_name: '{{ my_name }}'
 my_workspace_git_email: '{{ my_email }}'

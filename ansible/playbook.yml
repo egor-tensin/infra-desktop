@@ -20,8 +20,8 @@
 
     - utils
     - development
-
-    - tensin.infra.cups
+    - desktop
+    - desktop_manager
 
     - tensin.infra.my_dotfiles
 

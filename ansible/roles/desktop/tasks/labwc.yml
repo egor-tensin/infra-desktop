@@ -1,0 +1,13 @@
+- name: Install labwc & utilities
+  become: true
+  ansible.builtin.package:
+    name:
+      # The configs for all of these are in linux-home.
+      - labwc
+      # Terminal emulator
+      - alacritty
+      # Display configuration
+      - kanshi
+      # Desktop background
+      - swaybg
+    state: present

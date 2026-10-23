@@ -1,0 +1,9 @@
+- name: Fail if invalid implementation
+  ansible.builtin.fail:
+    msg: |
+      Desktop setup must be 'labwc'
+  when: |
+    desktop_impl not in ['labwc']
+
+- name: 'Set up desktop {{ desktop_impl }}'
+  ansible.builtin.include_tasks: '{{ desktop_impl }}.yml'
