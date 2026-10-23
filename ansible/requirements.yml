@@ -2,5 +2,6 @@ collections:
   - source: https://github.com/egor-tensin/infra-ansible.git
     type: git
     version: v8.0.0
-  - name: kewlfft.aur
-    version: 0.13.0
+  - name: https://github.com/kewlfft/ansible-aur.git
+    type: git
+    version: v0.13.1
