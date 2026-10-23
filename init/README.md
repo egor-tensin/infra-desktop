@@ -8,6 +8,7 @@ Assumptions about the archinstall run:
 
 Manual steps to do on the target host before running this playbook:
 
+* set up Wi-Fi using something like `nmcli device wifi connect SSID --ask`,
 * set up Avahi & nss-mdns as described [here] (for .local name resolution),
 * install Python (for executing Ansible modules),
 * ssh-copy-id (doesn't matter what key, it'll get overwritten from linux-home
