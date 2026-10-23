@@ -20,10 +20,9 @@
 
     - utils
     - development
+    - tensin.infra.my_dotfiles
     - desktop
     - desktop_manager
-
-    - tensin.infra.my_dotfiles
 
 - name: Set up the file dump
   hosts: laptop2
