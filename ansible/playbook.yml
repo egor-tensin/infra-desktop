@@ -2,51 +2,28 @@
   hosts: all
   gather_facts: false
 
-  vars_files:
-    - vars/packages.yml
-
   roles:
+    - tensin.infra.locale
     - makepkg
     - tensin.infra.pacman
     - tensin.infra.reflector
     - tensin.infra.paccache
-    - aur
-    - name: tensin.infra.pacman_install
-      vars:
-        pacman_packages: '{{ packages }}'
+    - tensin.infra.yay
 
-    - kernel
     - microcode
+    #- kernel
 
+    - tensin.infra.sudo
+    - tensin.infra.journald
     - tensin.infra.sshd
-    - name: tensin.infra.journald
-      vars:
-        journald_log_level: info
-    - sudo
-    - ntp
+    - wireguard
 
-    - tensin.infra.docker
-    - libvirt
+    - utils
+    - development
 
-    - lightdm_autologin
-    - cups
-    - mime
+    - tensin.infra.cups
 
-    - name: tensin.infra.wireguard
-      vars:
-        wg_name: vpn
-        wg_autoconnect: true
-    - name: tensin.infra.wireguard
-      vars:
-        wg_name: vpn_ger
-        wg_tunnel_everything: true
-        wg_autoconnect: false
-    - name: tensin.infra.wireguard
-      vars:
-        wg_name: vpn_rus
-        wg_tunnel_everything: true
-        wg_autoconnect: false
-        wg_peers: '{{ wg_peers_ru }}'
+    - tensin.infra.my_dotfiles
 
 - name: Set up the file dump
   hosts: laptop2
@@ -58,5 +35,4 @@
   hosts: all
   gather_facts: false
   roles:
-    - tensin.infra.my_dotfiles
     - tensin.infra.my_workspace

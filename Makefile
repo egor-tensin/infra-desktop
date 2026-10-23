@@ -14,6 +14,15 @@ deps:
 LIMIT ?= all
 $(eval $(call noexpand,LIMIT))
 
+.PHONY: init
+init: deps
+	@echo
+	@echo -----------------------------------------------------------------
+	@echo ansible-playbook
+	@echo -----------------------------------------------------------------
+	@cd -- init/ && \
+		ansible-playbook --ask-become-pass --limit '$(call escape,$(LIMIT))' playbook.yml
+
 .PHONY: configure
 configure: deps
 	@echo

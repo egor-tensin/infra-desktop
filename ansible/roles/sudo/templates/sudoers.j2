@@ -1,6 +1,0 @@
-{{ ansible_managed | comment }}
-
-# Preserve my environment variables:
-Defaults env_keep += "EDITOR HOME SSH_AUTH_SOCK"
-# Don't prompt for password for {{ ansible_user }}:
-{{ ansible_user }} ALL=(ALL) NOPASSWD:ALL

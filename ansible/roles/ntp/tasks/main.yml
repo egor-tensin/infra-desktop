@@ -1,4 +1,4 @@
-- name: Fail if wrong flavour
+- name: Fail if wrong backend
   ansible.builtin.fail:
     msg: NTP backend must be either 'systemd-timesyncd' or 'chrony'
   when: |

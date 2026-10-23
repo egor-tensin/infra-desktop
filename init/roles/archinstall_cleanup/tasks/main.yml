@@ -1,0 +1,19 @@
+- name: Check if the sudoers.d file exists
+  become: true
+  ansible.builtin.stat:
+    path: '/etc/sudoers.d/00_{{ ansible_user }}'
+    get_attributes: false
+    get_checksum: false
+    get_mime: false
+  register: result
+
+- name: Fail unless the sudoers.d file exists
+  ansible.builtin.fail:
+    msg: "sudoers.d file doesn't exist!"
+  when: not result.stat.exists
+
+- name: Remove the generated sudoers.d file
+  become: true
+  ansible.builtin.file:
+    path: '/etc/sudoers.d/00_{{ ansible_user }}'
+    state: absent

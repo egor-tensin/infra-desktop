@@ -1,0 +1,56 @@
+# Basic stuff, doesn't require configuration:
+utils_core:
+  - 7zip
+  - dash
+  - inetutils
+  - lsof
+  - man-db
+  - man-pages
+  - nano
+  - net-tools
+  - nmap
+  - rsync
+  - screen
+  - texinfo
+  - tmux
+  - traceroute
+  - unrar
+  - unzip
+  - vim
+  - wget
+  - whois
+  - xclip
+  - xsel
+  - zip
+
+utils_extra:
+  - atool
+  - dosfstools
+  - fd
+  - fzf
+  - imagemagick
+  - inxi
+  - jq
+  - moreutils
+  - nnn
+  - ntfs-3g
+  - os-prober
+  - pacman-contrib
+  - rclone
+  - speedtest-cli
+  - sshfs
+  - tree
+  - usbutils
+  - yt-dlp
+
+utils_fonts:
+  - noto-fonts
+  - noto-fonts-cjk
+  - noto-fonts-emoji
+  - terminus-font
+  - ttf-dejavu
+  - ttf-liberation
+
+utils_aur:
+  - config-links
+  - yay

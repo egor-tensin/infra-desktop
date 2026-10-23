@@ -1,0 +1,48 @@
+development_core:
+  - ansible
+  - ansible-lint
+  - base-devel
+  - clang
+  - cmake
+  - colordiff
+  - debuginfod
+  - diffutils
+  - doxygen
+  - elfutils
+  - gcc
+  - gcovr
+  - gdb
+  - git
+  - lcov
+  - llvm
+  - perf
+  - pyenv
+  - rbenv
+  - ruby-build
+  - strace
+  - tk
+  - wdiff
+
+development_extra:
+  - ansible
+  - ansible-lint
+  - aws-cli
+  - doctl
+  - github-cli
+  - graphviz
+  - npm
+  - terraform
+  - valgrind
+
+development_python:
+  - python-black
+  - python-flake8
+  - python-matplotlib
+  - python-pylint
+  - python-pylint-venv
+  - python-pytest
+
+development_aur:
+  - cmake-common
+  - tag-release
+  - yandex-cloud-cli-bin
