@@ -7,7 +7,7 @@ dependencies:
            + utils_extra
            + utils_fonts
         }}
-  - role: aur_install
+  - role: tensin.infra.aur_install
     vars:
       aur_install_packages: |
         {{ utils_aur }}

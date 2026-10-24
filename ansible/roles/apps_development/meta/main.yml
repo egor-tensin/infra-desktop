@@ -7,7 +7,7 @@ dependencies:
            + development_extra
            + development_python
         }}
-  - role: aur_install
+  - role: tensin.infra.aur_install
     vars:
       aur_install_packages: |
         {{ development_aur }}

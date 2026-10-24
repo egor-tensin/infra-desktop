@@ -8,7 +8,6 @@
     - tensin.infra.pacman
     - tensin.infra.reflector
     - tensin.infra.paccache
-    - tensin.infra.yay
 
     - microcode
     #- kernel
@@ -25,10 +24,11 @@
     - desktop_manager
     - apps_desktop
 
-- name: Set up the file dump
+- name: laptop2
   hosts: laptop2
   gather_facts: false
   roles:
+    - tensin.infra.linux_status
     - dump
 
 - name: Set up workflows
