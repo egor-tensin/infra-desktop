@@ -29,5 +29,5 @@
     dest: /boot/grub/grub.cfg
     owner: root
     group: root
-    mode: '755'
+    mode: '0755'
   notify: bootloader_configured

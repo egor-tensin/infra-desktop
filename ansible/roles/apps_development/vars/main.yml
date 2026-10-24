@@ -1,4 +1,5 @@
-development_core:
+apps_development_packages:
+  # Core:
   - ansible
   - ansible-lint
   - base-devel
@@ -24,7 +25,7 @@ development_core:
   - tk
   - wdiff
 
-development_extra:
+  # Extra:
   - ansible
   - ansible-lint
   - aws-cli
@@ -36,7 +37,7 @@ development_extra:
   - valgrind
   - zizmor
 
-development_python:
+  # Python:
   - python-black
   - python-flake8
   - python-matplotlib
@@ -44,7 +45,7 @@ development_python:
   - python-pylint-venv
   - python-pytest
 
-development_aur:
+apps_development_aur:
   - cmake-common
   - tag-release
   - yandex-cloud-cli-bin

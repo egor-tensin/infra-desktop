@@ -5,4 +5,4 @@
     dest: /etc/makepkg.conf.d/debug.conf
     owner: root
     group: root
-    mode: '644'
+    mode: '0644'

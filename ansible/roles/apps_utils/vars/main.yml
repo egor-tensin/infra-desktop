@@ -1,4 +1,5 @@
-utils_core:
+apps_utils_packages:
+  # Core:
   - 7zip
   - dash
   - inetutils
@@ -22,7 +23,7 @@ utils_core:
   - xsel
   - zip
 
-utils_extra:
+  # Extra:
   - atool
   - dosfstools
   - fd
@@ -42,7 +43,7 @@ utils_extra:
   - usbutils
   - yt-dlp
 
-utils_fonts:
+  # Fonts:
   - noto-fonts
   - noto-fonts-cjk
   - noto-fonts-emoji
@@ -50,6 +51,6 @@ utils_fonts:
   - ttf-dejavu
   - ttf-liberation
 
-utils_aur:
+apps_utils_aur:
   - config-links
   - yay

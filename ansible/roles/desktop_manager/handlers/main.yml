@@ -1,4 +1,4 @@
 - name: Reboot
+  listen: ly_setup
   become: true
   ansible.builtin.reboot:
-  listen: ly_setup

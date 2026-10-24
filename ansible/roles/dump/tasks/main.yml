@@ -18,7 +18,7 @@
         state: directory
         owner: root
         group: root
-        mode: '755'
+        mode: '0755'
 
     - name: Create override file
       ansible.builtin.template:
@@ -26,9 +26,8 @@
         dest: /etc/systemd/system/docker.service.d/dump_depends.conf
         owner: root
         group: root
-        mode: '644'
-      notify:
-        - systemd_reload
+        mode: '0644'
+      notify: systemd_reload
 
 - name: Run handlers if neccessary
   ansible.builtin.meta: flush_handlers

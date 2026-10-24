@@ -23,18 +23,16 @@
         var: mime_types
 
     - name: Fail if no MIME types
+      when: mime_types | length == 0
       ansible.builtin.fail:
         msg: No MIME types defined?
-      when: mime_types | length == 0
 
     - name: Configure MIME type
+      loop: '{{ mime_types }}'
       community.general.ini_file:
         path: ~/.config/mimeapps.list
         section: Default Applications
-        option: '{{ type }}'
+        option: '{{ item }}'
         value: '{{ app }}.desktop'
         no_extra_spaces: true
         mode: '0600'
-      loop: '{{ mime_types }}'
-      loop_control:
-        loop_var: type

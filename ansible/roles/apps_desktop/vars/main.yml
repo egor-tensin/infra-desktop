@@ -1,11 +1,13 @@
-packages_utils:
+apps_desktop_packages:
+  # Utils:
+
   # https://wiki.archlinux.org/title/Wayland#Qt
   - qt5-wayland
   - qt6-wayland
   # List outputs & configure them:
   - wlr-randr
 
-packages_main:
+  # Actual apps:
   - firefox
   - keepassxc
   - qbittorrent

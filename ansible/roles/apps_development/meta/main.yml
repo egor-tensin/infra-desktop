@@ -1,16 +1,10 @@
 dependencies:
   - role: tensin.infra.pacman_install
     vars:
-      pacman_install_packages: |
-        {{
-           development_core
-           + development_extra
-           + development_python
-        }}
+      pacman_install_packages: '{{ apps_development_packages }}'
   - role: tensin.infra.aur_install
     vars:
-      aur_install_packages: |
-        {{ development_aur }}
+      aur_install_packages: '{{ apps_development_aur }}'
   - role: tensin.infra.docker
     vars:
       docker_add_to_group: true

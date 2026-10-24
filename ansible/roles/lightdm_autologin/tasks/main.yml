@@ -18,7 +18,7 @@
     state: directory
     owner: root
     group: root
-    mode: '755'
+    mode: '0755'
 
 - name: Create LightDM override file
   become: true
@@ -27,7 +27,7 @@
     dest: /etc/lightdm/lightdm.conf.d/autologin.conf
     owner: root
     group: root
-    mode: '644'
+    mode: '0644'
   notify: lightdm_configured
 
 - name: Run handlers if neccessary

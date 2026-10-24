@@ -9,23 +9,21 @@
       ansible_facts['cmdline']
 
 - name: Validate command line
-  when: option not in ansible_facts['cmdline']
-  ansible.builtin.fail:
-    msg:
-      Expected option {{ option }} was not found in the current config!
   loop:
     - root
     - rw
-  loop_control:
-    loop_var: option
+  when: item not in ansible_facts['cmdline']
+  ansible.builtin.fail:
+    msg:
+      Expected option {{ item }} was not found in the current config!
 
 - name: Generate bootloader entries
-  become: true
   loop:
     - latest
     - lts
   loop_control:
     loop_var: flavour
+  become: true
   ansible.builtin.template:
     src: loader.conf
     dest: '/boot/loader/entries/{{ flavour }}.conf'

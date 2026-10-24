@@ -2,8 +2,4 @@ dependencies:
   - role: tensin.infra.cups
   - role: tensin.infra.pacman_install
     vars:
-      pacman_install_packages: |
-        {{
-           packages_main
-           + packages_utils
-        }}
+      pacman_install_packages: '{{ apps_desktop_packages }}'

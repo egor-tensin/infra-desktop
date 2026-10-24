@@ -4,19 +4,19 @@
       - processor
 
 - name: Install Intel microcode package
+  when: |
+    'GenuineIntel' in ansible_facts["processor"]
   become: true
   ansible.builtin.package:
     name: intel-ucode
     state: present
-  when: |
-    'GenuineIntel' in ansible_facts["processor"]
   notify: microcode_installed
 
 - name: Install AMD microcode package
+  when: |
+    'AuthenticAMD' in ansible_facts["processor"]
   become: true
   ansible.builtin.package:
     name: amd-ucode
     state: present
-  when: |
-    'AuthenticAMD' in ansible_facts["processor"]
   notify: microcode_installed
