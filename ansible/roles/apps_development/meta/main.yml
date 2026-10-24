@@ -12,3 +12,5 @@ dependencies:
       aur_install_packages: |
         {{ development_aur }}
   - role: tensin.infra.docker
+    vars:
+      desktop_add_to_group: true
