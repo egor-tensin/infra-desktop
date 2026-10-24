@@ -1,4 +1,12 @@
 - name: Set default GRUB entry
+  vars:
+    kernel_image: |
+      {{
+        {
+          'latest': '/boot/vmlinuz-linux',
+          'lts': '/boot/vmlinuz-linux-lts',
+        }[kernel_flavour]
+      }}
   become: true
   community.general.ini_file:
     create: false
@@ -22,9 +30,4 @@
     owner: root
     group: root
     mode: '755'
-  register: kernel_grub_cfg
-
-- name: Reboot
-  become: true
-  ansible.builtin.reboot:
-  when: kernel_grub_cfg.changed
+  notify: bootloader_configured

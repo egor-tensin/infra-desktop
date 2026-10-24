@@ -15,34 +15,24 @@
   when: |
     kernel_flavour not in ['latest', 'lts']
 
+- name: Install kernels
+  become: true
+  ansible.builtin.package:
+    name:
+      - linux
+      - linux-headers
+      - linux-lts
+      - linux-lts-headers
+
 - name: Fail if invalid bootloader
   ansible.builtin.fail:
     msg: |
-      Support bootloaders are: 'grub', 'systemd-boot'
+      Supported bootloaders are: 'grub', 'systemd-boot'
   when: |
     kernel_bootloader not in ['grub', 'systemd-boot']
 
-- vars:
-    packages: |
-      {{
-        {
-          'latest': ['linux', 'linux-headers'],
-          'lts': ['linux-lts', 'linux-lts-headers'],
-        }[kernel_flavour]
-      }}
-    kernel_image: |
-      {{
-        {
-          'latest': '/boot/vmlinuz-linux',
-          'lts': '/boot/vmlinuz-linux-lts',
-        }[kernel_flavour]
-      }}
-  block:
-    - name: Install packages
-      become: true
-      ansible.builtin.package:
-        name: '{{ packages }}'
-        state: present
+- name: 'Set up for bootloader {{ kernel_bootloader }}'
+  ansible.builtin.include_tasks: '{{ kernel_bootloader }}.yml'
 
-    - name: 'Set up for bootloader {{ kernel_bootloader }}'
-      ansible.builtin.include_tasks: '{{ kernel_bootloader }}.yml'
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers
