@@ -1,4 +1,11 @@
-packages:
-  - firefox
-  - telegram-desktop
+packages_utils:
+  # https://wiki.archlinux.org/title/Wayland#Qt
+  - qt5-wayland
+  # List outputs & configure them:
   - wlr-randr
+
+packages_main:
+  - firefox
+  - keepassxc
+  - qbittorrent
+  - telegram-desktop
