@@ -10,6 +10,7 @@
     state: present
   when: |
     'GenuineIntel' in ansible_facts["processor"]
+  notify: microcode_installed
 
 - name: Install AMD microcode package
   become: true
@@ -18,3 +19,4 @@
     state: present
   when: |
     'AuthenticAMD' in ansible_facts["processor"]
+  notify: microcode_installed
