@@ -1,5 +1,3 @@
-ntp_backend: systemd-timesyncd
-
 wireguard_private_key: uEF02PPfVCDYkLDxpuJzupGMbtBt+6vmj0dKKWABd0c=
 wireguard_addr4: '{{ wireguard_prefix4 }}.19/24'
 wireguard_addr6: '{{ wireguard_prefix6 }}.19/48'
@@ -14,13 +12,3 @@ wireguard_peers_ru:
     preshared_key: CL9xiWX3CtFaCPESpmCQblLubv8ZXjfNAW5O0H4M30w=
     endpoint: vpn-ru.tensin.name:443
     persistent_keepalive: 25
-
-aur_packages_this:
-  - grub-reboot-into-windows
-  - k380-function-keys-conf
-
-aur_packages: '{{ aur_packages_basic + aur_packages_desktop + aur_packages_this }}'
-
-pacman_ignore_packages:
-  # https://gitlab.xfce.org/xfce/xfdesktop/-/work_items/458
-  - libxfce4windowing

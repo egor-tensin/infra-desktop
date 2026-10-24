@@ -1,9 +1,3 @@
-docker_enable_service: false
-
-# My stupid fucking headphone set randomly disconnects on LTS kernel.
-# TODO: switch to LTS once I replace it.
-kernel_flavour: latest
-
 wireguard_private_key: ABDxabgiXbiq7G+Leg+h3k7eGF4WHPv0alFDSMuUA10=
 wireguard_addr4: '{{ wireguard_prefix4 }}.21/24'
 wireguard_addr6: '{{ wireguard_prefix6 }}.21/48'
@@ -18,5 +12,3 @@ wireguard_peers_ru:
     preshared_key: FER0tTq0hnPqFk5TtvsEUp8YKIYgRdQ++m4RFPij5lE=
     endpoint: vpn-ru.tensin.name:443
     persistent_keepalive: 25
-
-aur_packages: '{{ aur_packages_basic + aur_packages_desktop }}'

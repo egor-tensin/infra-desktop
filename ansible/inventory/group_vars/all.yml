@@ -8,7 +8,6 @@ sudo_env:
 
 kernel_flavour: lts
 journald_log_level: info
-ntp_backend: chrony
 desktop_impl: labwc
 desktop_manager_impl: ly
 

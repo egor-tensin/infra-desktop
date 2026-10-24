@@ -1,2 +1,0 @@
-# Must be one of 'systemd-timesyncd', 'chrony'
-ntp_backend: systemd-timesyncd
