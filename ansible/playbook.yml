@@ -15,8 +15,8 @@
     - tensin.infra.sudo
     - tensin.infra.journald
     - tensin.infra.sshd
-    - wireguard
 
+    - networking
     - apps_utils
     - apps_development
     - tensin.infra.my_dotfiles
