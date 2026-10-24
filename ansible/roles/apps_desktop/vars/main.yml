@@ -1,6 +1,7 @@
 packages_utils:
   # https://wiki.archlinux.org/title/Wayland#Qt
   - qt5-wayland
+  - qt6-wayland
   # List outputs & configure them:
   - wlr-randr
 
