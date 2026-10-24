@@ -33,6 +33,7 @@ development_extra:
   - npm
   - terraform
   - valgrind
+  - zizmor
 
 development_python:
   - python-black
