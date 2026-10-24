@@ -1,0 +1,6 @@
+dependencies:
+  - role: tensin.infra.cups
+  - role: tensin.infra.pacman_install
+    vars:
+      pacman_install_packages: |
+        {{ packages }}

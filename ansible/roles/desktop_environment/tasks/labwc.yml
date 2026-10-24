@@ -10,4 +10,8 @@
       - kanshi
       # Desktop background
       - swaybg
+      # Notifications
+      - mako
+
+      - brightnessctl
     state: present

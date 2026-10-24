@@ -1,7 +1,0 @@
-dependencies:
-  - role: tensin.infra.pacman_install
-    vars:
-      pacman_install_packages: '{{ utils_core + utils_extra + utils_fonts }}'
-  - role: aur_install
-    vars:
-      aur_install_packages: '{{ utils_aur }}'

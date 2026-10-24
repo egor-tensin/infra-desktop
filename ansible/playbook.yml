@@ -18,11 +18,12 @@
     - tensin.infra.sshd
     - wireguard
 
-    - utils
-    - development
+    - apps_utils
+    - apps_development
     - tensin.infra.my_dotfiles
-    - desktop
+    - desktop_environment
     - desktop_manager
+    - apps_desktop
 
 - name: Set up the file dump
   hosts: laptop2

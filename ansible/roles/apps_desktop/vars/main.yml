@@ -1,0 +1,4 @@
+packages:
+  - firefox
+  - telegram-desktop
+  - wlr-randr
