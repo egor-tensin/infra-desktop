@@ -15,6 +15,7 @@ development_core:
   - git
   - lcov
   - llvm
+  - mingw-w64
   - perf
   - pyenv
   - rbenv
