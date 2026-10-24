@@ -13,4 +13,4 @@ dependencies:
         {{ development_aur }}
   - role: tensin.infra.docker
     vars:
-      desktop_add_to_group: true
+      docker_add_to_group: true
