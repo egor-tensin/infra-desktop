@@ -1,0 +1,12 @@
+- name: Fail if invalid implementation
+  when: |
+    display_manager_impl not in ['lightdm', 'ly']
+  ansible.builtin.fail:
+    msg: |
+      Display manager must be one of 'lightdm', 'ly'
+
+- name: 'Set up display manager {{ display_manager_impl }}'
+  ansible.builtin.include_tasks: '{{ display_manager_impl }}.yml'
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers

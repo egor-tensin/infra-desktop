@@ -1,3 +1,0 @@
-# Must be one of 'lightdm', 'ly'
-#desktop_manager_impl:
-desktop_manager_autologin: false

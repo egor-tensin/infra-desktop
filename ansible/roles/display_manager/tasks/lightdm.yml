@@ -19,17 +19,17 @@
     owner: root
     group: root
     mode: '0644'
-  notify: desktop_manager_configured
+  notify: display_manager_configured
 
 - name: Enable LightDM service
   become: true
   ansible.builtin.systemd_service:
     name: lightdm
     enabled: true
-  notify: desktop_manager_configured
+  notify: display_manager_configured
 
 - name: Configure automatic login
-  when: desktop_manager_autologin
+  when: display_manager_autologin
   become: true
   block:
     - name: Add group autologin
@@ -58,4 +58,4 @@
         owner: root
         group: root
         mode: '0644'
-      notify: desktop_manager_configured
+      notify: display_manager_configured

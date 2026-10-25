@@ -1,0 +1,3 @@
+# Must be one of 'lightdm', 'ly'
+#display_manager_impl:
+display_manager_autologin: false

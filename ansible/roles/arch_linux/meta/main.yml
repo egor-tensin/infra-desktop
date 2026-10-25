@@ -1,0 +1,7 @@
+dependencies:
+  - role: makepkg
+  - role: tensin.infra.pacman
+  - role: tensin.infra.reflector
+  - role: tensin.infra.paccache
+  - role: tensin.infra.kernel
+  - role: tensin.infra.microcode

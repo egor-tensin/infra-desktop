@@ -1,0 +1,6 @@
+{{ ansible_managed | comment }}
+
+[Login]
+HandleLidSwitch=suspend
+HandleLidSwitchExternalPower={{ power_management_suspend_on_external | ternary('suspend', 'ignore') }}
+HandlePowerKey=suspend

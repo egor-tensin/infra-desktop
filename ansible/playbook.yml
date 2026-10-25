@@ -3,26 +3,14 @@
   gather_facts: false
 
   roles:
-    - tensin.infra.locale
-    - makepkg
-    - tensin.infra.pacman
-    - tensin.infra.reflector
-    - tensin.infra.paccache
-
-    - tensin.infra.kernel
-    - tensin.infra.microcode
-
-    - tensin.infra.sudo
-    - tensin.infra.journald
-    - tensin.infra.sshd
-
+    - arch_linux
+    - apps_system
     - tensin.infra.my_dotfiles
-
     - networking
     - apps_utils
     - apps_development
     - desktop_environment
-    - desktop_manager
+    - display_manager
     - apps_desktop
 
 - name: laptop2

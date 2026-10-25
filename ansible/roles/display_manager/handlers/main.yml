@@ -1,4 +1,4 @@
 - name: Reboot
-  listen: desktop_manager_configured
+  listen: display_manager_configured
   become: true
   ansible.builtin.reboot:
