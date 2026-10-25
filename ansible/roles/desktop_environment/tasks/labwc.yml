@@ -10,8 +10,16 @@
       - kanshi
       # Desktop background
       - swaybg
+      # Screen power
+      - brightnessctl
+      - swayidle
+      - swaylock
+      # Screenshots
+      - grim
+      - slurp
       # Notifications
       - mako
-
-      - brightnessctl
+      # Shit I don't know about
+      - xdg-desktop-portal-gtk
+      - xdg-desktop-portal-wlr
     state: present
