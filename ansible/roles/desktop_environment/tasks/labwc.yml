@@ -2,7 +2,6 @@
   become: true
   ansible.builtin.package:
     name:
-      # The configs for all of these are in linux-home.
       - labwc
       # Terminal emulator
       - alacritty
@@ -14,7 +13,8 @@
       - brightnessctl
       - swayidle
       - swaylock
-      # Screenshots
+      - wlopm
+      # Screen capture
       - grim
       - slurp
       # Notifications
@@ -23,3 +23,31 @@
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
     state: present
+
+- name: Create ~/.config/labwc
+  ansible.builtin.file:
+    path: ~/.config/labwc
+    state: directory
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0755'
+
+- name: Configure labwc
+  loop:
+    - environment
+    - autostart
+  ansible.builtin.template:
+    src: 'labwc/{{ item }}.j2'
+    dest: '~/.config/labwc/{{ item }}'
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0644'
+
+- name: Configure alacritty
+  ansible.builtin.import_tasks: alacritty.yml
+
+- name: Configure kanshi
+  ansible.builtin.import_tasks: kanshi.yml
+
+- name: Configure mako
+  ansible.builtin.import_tasks: mako.yml

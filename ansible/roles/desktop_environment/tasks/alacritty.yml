@@ -1,0 +1,21 @@
+- name: Create ~/.config/alacritty
+  ansible.builtin.file:
+    path: ~/.config/alacritty
+    state: directory
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0755'
+
+- name: Clone alacritty themes
+  ansible.builtin.git:
+    repo: 'https://github.com/alacritty/alacritty-theme.git'
+    dest: ~/.config/alacritty/themes
+    accept_hostkey: true
+
+- name: Create alacritty.toml
+  ansible.builtin.template:
+    src: alacritty/alacritty.toml.j2
+    dest: ~/.config/alacritty/alacritty.toml
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0644'

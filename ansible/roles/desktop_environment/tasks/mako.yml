@@ -1,0 +1,15 @@
+- name: Create ~/.config/mako
+  ansible.builtin.file:
+    path: ~/.config/mako
+    state: directory
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0755'
+
+- name: Create ~/.config/mako/config
+  ansible.builtin.template:
+    src: mako/config.j2
+    dest: ~/.config/mako/config
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0644'
