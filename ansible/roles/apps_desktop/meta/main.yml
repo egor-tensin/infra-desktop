@@ -1,4 +1,5 @@
 dependencies:
+  - role: power
   - role: tensin.infra.cups
   - role: bluetooth
   - role: tensin.infra.pacman_install

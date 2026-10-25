@@ -16,10 +16,11 @@
     - tensin.infra.journald
     - tensin.infra.sshd
 
+    - tensin.infra.my_dotfiles
+
     - networking
     - apps_utils
     - apps_development
-    - tensin.infra.my_dotfiles
     - desktop_environment
     - desktop_manager
     - apps_desktop
