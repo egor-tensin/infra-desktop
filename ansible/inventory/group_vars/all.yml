@@ -7,6 +7,7 @@ sudo_env:
   - SSH_AUTH_SOCK
 
 kernel_flavour: lts
+kernel_bootloader: systemd-boot
 journald_log_level: info
 desktop_impl: labwc
 desktop_manager_impl: ly

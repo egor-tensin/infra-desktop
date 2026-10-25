@@ -9,8 +9,8 @@
     - tensin.infra.reflector
     - tensin.infra.paccache
 
-    - kernel
-    - microcode
+    - tensin.infra.kernel
+    - tensin.infra.microcode
 
     - tensin.infra.sudo
     - tensin.infra.journald

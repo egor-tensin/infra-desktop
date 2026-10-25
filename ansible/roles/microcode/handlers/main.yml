@@ -1,4 +1,0 @@
-- name: Reboot
-  listen: microcode_installed
-  become: true
-  ansible.builtin.reboot:
