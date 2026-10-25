@@ -1,0 +1,61 @@
+- name: Install LightDM
+  become: true
+  ansible.builtin.package:
+    name:
+      - lightdm
+      - lightdm-slick-greeter
+    state: present
+
+- name: Set LightDM greeter
+  become: true
+  community.general.ini_file:
+    path: /etc/lightdm/lightdm.conf
+    section: 'Seat:*'
+    option: greeter-session
+    value: lightdm-slick-greeter
+    state: present
+    create: false
+    no_extra_spaces: true
+    owner: root
+    group: root
+    mode: '0644'
+  notify: desktop_manager_configured
+
+- name: Enable LightDM service
+  become: true
+  ansible.builtin.systemd_service:
+    name: lightdm
+    enabled: true
+  notify: desktop_manager_configured
+
+- name: Configure automatic login
+  when: desktop_manager_autologin
+  become: true
+  block:
+    - name: Add group autologin
+      ansible.builtin.group:
+        name: autologin
+        system: true
+
+    - name: Add user to group autologin
+      ansible.builtin.user:
+        append: true
+        groups: [autologin]
+        name: '{{ ansible_user }}'
+
+    - name: Create LightDM override directory
+      ansible.builtin.file:
+        path: /etc/lightdm/lightdm.conf.d
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Create LightDM override file
+      ansible.builtin.template:
+        src: lightdm.conf.j2
+        dest: /etc/lightdm/lightdm.conf.d/autologin.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: desktop_manager_configured

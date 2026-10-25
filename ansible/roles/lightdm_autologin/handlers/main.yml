@@ -1,5 +1,0 @@
-- name: Reboot if necessary
-  listen: lightdm_configured
-  become: true
-  ansible.builtin.reboot:
-    reboot_timeout: 180

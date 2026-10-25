@@ -1,4 +1,4 @@
 - name: Reboot
-  listen: ly_setup
+  listen: desktop_manager_configured
   become: true
   ansible.builtin.reboot:

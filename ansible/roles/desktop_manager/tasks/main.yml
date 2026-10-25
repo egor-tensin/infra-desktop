@@ -1,9 +1,12 @@
 - name: Fail if invalid implementation
   when: |
-    desktop_manager_impl not in ['ly']
+    desktop_manager_impl not in ['lightdm', 'ly']
   ansible.builtin.fail:
     msg: |
-      Desktop manager must be 'ly'
+      Desktop manager must be one of 'lightdm', 'ly'
 
 - name: 'Set up desktop manager {{ desktop_manager_impl }}'
   ansible.builtin.include_tasks: '{{ desktop_manager_impl }}.yml'
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers
