@@ -1,2 +1,3 @@
 # Must be 'ly'
 #desktop_manager_impl:
+desktop_manager_autologin: false

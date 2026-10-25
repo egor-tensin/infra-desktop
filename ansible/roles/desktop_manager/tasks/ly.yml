@@ -5,6 +5,43 @@
     state: present
   notify: ly_setup
 
+- name: Configure ly
+  loop:
+    - option: clock
+      value: '%F %T'
+    - option: default_input
+      value: password
+  become: true
+  community.general.ini_file:
+    path: /etc/ly/config.ini
+    option: '{{ item.option }}'
+    value: '{{ item.value }}'
+    state: present
+    create: false
+    owner: root
+    group: root
+    mode: '0644'
+  notify: ly_setup
+
+- name: Configure automatic login
+  when: desktop_manager_autologin
+  loop:
+    - option: auto_login_user
+      value: '{{ ansible_user }}'
+    - option: auto_login_session
+      value: '{{ desktop_impl }}'
+  become: true
+  community.general.ini_file:
+    path: /etc/ly/config.ini
+    option: '{{ item.option }}'
+    value: '{{ item.value }}'
+    state: present
+    create: false
+    owner: root
+    group: root
+    mode: '0644'
+  notify: ly_setup
+
 - name: Enable ly service
   become: true
   ansible.builtin.systemd_service:

@@ -11,6 +11,7 @@ kernel_bootloader: systemd-boot
 journald_log_level: info
 desktop_impl: labwc
 desktop_manager_impl: ly
+desktop_manager_autologin: true
 
 my_workspace_git_name: '{{ my_name }}'
 my_workspace_git_email: '{{ my_email }}'
