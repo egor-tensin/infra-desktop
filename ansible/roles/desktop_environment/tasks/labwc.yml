@@ -34,8 +34,9 @@
 
 - name: Configure labwc
   loop:
-    - environment
     - autostart
+    - environment
+    - rc.xml
   ansible.builtin.template:
     src: 'labwc/{{ item }}.j2'
     dest: '~/.config/labwc/{{ item }}'

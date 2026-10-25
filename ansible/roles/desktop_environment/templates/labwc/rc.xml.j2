@@ -1,0 +1,24 @@
+{{ ansible_managed | comment('xml') }}
+
+<labwc_config>
+  <keyboard>
+    <!--
+      I assume this enables labwc's default shortcuts. They can be found here:
+      https://github.com/labwc/labwc/blob/master/docs/rc.xml.all
+    -->
+    <default/>
+
+    <!-- Capture the screen and copy it to clipboard: -->
+    <keybind key="Print">
+      <action name="Execute" command="sh -c 'grim - | wl-copy'"/>
+    </keybind>
+    <!-- Capture the screen and write it to GRIM_DEFAULT_DIR: -->
+    <keybind key="S-Print">
+      <action name="Execute" command="grim"/>
+    </keybind>
+    <!-- Capture a region of the screen and copy it to clipboard: -->
+    <keybind key="W-S-s">
+      <action name="Execute" command="sh -c 'slurp | grim -g - - | wl-copy'"/>
+    </keybind>
+  </keyboard>
+</labwc_config>
