@@ -36,6 +36,7 @@ apps_utils_packages:
   - ntfs-3g
   - os-prober
   - pacman-contrib
+  - parted
   - rclone
   - speedtest-cli
   - sshfs
