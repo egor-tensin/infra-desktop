@@ -29,7 +29,7 @@
     - option: auto_login_user
       value: '{{ ansible_user }}'
     - option: auto_login_session
-      value: '{{ desktop_impl }}'
+      value: '{{ desktop_environment_impl }}'
   become: true
   community.general.ini_file:
     path: /etc/ly/config.ini

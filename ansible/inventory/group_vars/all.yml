@@ -9,7 +9,7 @@ sudo_env:
 kernel_flavour: lts
 kernel_bootloader: systemd-boot
 journald_log_level: info
-desktop_impl: labwc
+desktop_environment_impl: labwc
 desktop_manager_impl: ly
 desktop_manager_autologin: true
 
