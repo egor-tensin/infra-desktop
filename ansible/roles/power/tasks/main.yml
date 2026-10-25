@@ -1,12 +1,5 @@
-- name: Install power-profiles-daemon
-  become: true
-  ansible.builtin.package:
-    name: power-profiles-daemon
-    state: present
+- name: Set up power-profiles-daemon
+  ansible.builtin.import_tasks: power_profiles.yml
 
-- name: Enable & start power-profiles-daemon.service
-  become: true
-  ansible.builtin.systemd_service:
-    name: power-profiles-daemon
-    enabled: true
-    state: started
+- name: Configure lid/power button actions
+  ansible.builtin.import_tasks: suspend.yml

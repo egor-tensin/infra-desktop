@@ -1,6 +1,9 @@
 # Keep it enabled for Jellyfin, qBittorrent, etc.
 docker_enable_service: true
 
+# It's a "server", so running always:
+power_suspend_on_external_power: false
+
 my_workspace_projects:
   - url: 'ssh://git@bitbucket.org/egor-tensin/server-tensin-laptop2.git'
     name: server
