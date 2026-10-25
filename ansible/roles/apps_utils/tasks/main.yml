@@ -1,0 +1,6 @@
+- name: Enable ssh-agent service
+  ansible.builtin.systemd_service:
+    scope: user
+    name: ssh-agent
+    enabled: true
+    state: started
