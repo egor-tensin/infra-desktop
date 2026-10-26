@@ -1,0 +1,3 @@
+dependencies:
+  - role: tensin.infra.cups
+  - role: bluetooth

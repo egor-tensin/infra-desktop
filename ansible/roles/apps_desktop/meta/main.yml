@@ -1,6 +1,4 @@
 dependencies:
-  - role: tensin.infra.cups
-  - role: bluetooth
   - role: tensin.infra.pacman_install
     vars:
       pacman_install_packages: '{{ apps_desktop_packages }}'
