@@ -24,6 +24,7 @@
     - alacritty
     - kanshi
     - mako
+    - themes
     # As of Oct '26, all other Wayland-native options worked like crap when I
     # tried them.
     - xfce4-panel
@@ -38,6 +39,21 @@
     owner: '{{ ansible_user }}'
     group: '{{ ansible_user }}'
     mode: '0755'
+
+- name: Clone labwc-artwork
+  ansible.builtin.git:
+    repo: 'https://github.com/labwc/labwc-artwork.git'
+    dest: ~/.config/labwc/labwc-artwork
+    version: HEAD
+    accept_hostkey: true
+
+- name: Create symlink to labwc-artwork
+  ansible.builtin.file:
+    src: .config/labwc/labwc-artwork/themes
+    dest: ~/.themes
+    state: link
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
 
 - name: Configure labwc
   loop:

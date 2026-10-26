@@ -1,0 +1,23 @@
+- name: Install packages
+  become: true
+  ansible.builtin.package:
+    name:
+      # At least without this, Adwaita (the default GTK theme) doesn't seem to
+      # be shown in theme previewers/editors (e.g. nwg-look).
+      - gnome-themes-extra
+
+      # GTK themes:
+      - adapta-gtk-theme
+
+      # Icon themes:
+      - hicolor-icon-theme
+      - papirus-icon-theme
+
+      # Fonts:
+      - noto-fonts
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+
+      # Preview & edit themes, minimal dependencies:
+      - gtk3-demos
+      - nwg-look

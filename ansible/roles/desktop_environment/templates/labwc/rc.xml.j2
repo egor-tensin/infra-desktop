@@ -1,6 +1,13 @@
 {{ ansible_managed | comment('xml') }}
 
 <labwc_config>
+  <!--
+    Themes are pulled by Ansible from https://github.com/labwc/labwc-artwork
+  -->
+  <theme>
+    <name>Adwaita-Papirius-dark</name>
+  </theme>
+
   <keyboard>
     <!--
       I assume this enables labwc's default shortcuts. They can be found here:
