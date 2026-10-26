@@ -1,7 +1,7 @@
 collections:
   - source: https://github.com/egor-tensin/infra-ansible.git
     type: git
-    version: v9.0.0
+    version: v10.1.0
   - name: https://github.com/kewlfft/ansible-aur.git
     type: git
     version: v0.13.1
