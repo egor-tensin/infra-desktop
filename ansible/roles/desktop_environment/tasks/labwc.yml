@@ -17,6 +17,7 @@
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
     state: present
+  notify: reboot
 
 - name: Configure apps
   loop:
@@ -49,3 +50,4 @@
     owner: '{{ ansible_user }}'
     group: '{{ ansible_user }}'
     mode: '0644'
+  notify: reboot

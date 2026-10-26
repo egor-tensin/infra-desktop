@@ -7,3 +7,6 @@
 
 - name: 'Set up desktop {{ desktop_environment_impl }}'
   ansible.builtin.include_tasks: '{{ desktop_environment_impl }}.yml'
+
+- name: Run handlers if neccessary
+  ansible.builtin.meta: flush_handlers
