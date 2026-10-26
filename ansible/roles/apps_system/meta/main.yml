@@ -1,6 +1,0 @@
-dependencies:
-  - role: tensin.infra.locale
-  - role: tensin.infra.sudo
-  - role: tensin.infra.journald
-  - role: tensin.infra.sshd
-  - role: power_management

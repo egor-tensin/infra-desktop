@@ -3,9 +3,9 @@
   gather_facts: false
 
   roles:
-    - arch_linux
-    - apps_system
+    - tensin.infra.arch_linux
     - tensin.infra.my_dotfiles
+    - power_management
     - networking
     - apps_utils
     - apps_development
