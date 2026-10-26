@@ -44,6 +44,7 @@
     - autostart
     - environment
     - rc.xml
+    - shutdown
   ansible.builtin.template:
     src: 'labwc/{{ item }}.j2'
     dest: '~/.config/labwc/{{ item }}'

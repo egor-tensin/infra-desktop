@@ -13,3 +13,6 @@ nm-applet > /dev/null 2>&1 &
 blueman-applet > /dev/null 2>&1 &
 
 xfce4-panel > /dev/null 2>&1 &
+
+# From https://wiki.archlinux.org/title/Labwc#Integration_with_systemd
+systemctl -q --no-block --user start labwc-session.target
