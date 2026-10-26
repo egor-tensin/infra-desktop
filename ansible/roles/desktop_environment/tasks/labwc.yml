@@ -25,6 +25,7 @@
     - kanshi
     - mako
     - themes
+    - udiskie
     # As of Oct '26, all other Wayland-native options worked like crap when I
     # tried them.
     - xfce4-panel
