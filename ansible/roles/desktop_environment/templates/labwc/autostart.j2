@@ -11,6 +11,10 @@ swayidle -w \
     resume 'wlopm --on \*' \
     > /dev/null 2>&1 &
 
+# mako (the notification service) has a preset-enabled user service, so I don't
+# think it needs to be run here:
+#mako > /dev/null 2>&1 &
+
 nm-applet > /dev/null 2>&1 &
 blueman-applet > /dev/null 2>&1 &
 
