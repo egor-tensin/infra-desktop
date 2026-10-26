@@ -1,3 +1,9 @@
+- name: Install Alacritty
+  become: true
+  ansible.builtin.package:
+    name: alacritty
+    state: present
+
 - name: Create ~/.config/alacritty
   ansible.builtin.file:
     path: ~/.config/alacritty

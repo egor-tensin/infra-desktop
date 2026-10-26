@@ -1,3 +1,9 @@
+- name: Install kanshi
+  become: true
+  ansible.builtin.package:
+    name: kanshi
+    state: present
+
 - name: Create ~/.config/kanshi
   ansible.builtin.file:
     path: ~/.config/kanshi

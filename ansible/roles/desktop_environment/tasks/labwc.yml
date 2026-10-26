@@ -3,10 +3,6 @@
   ansible.builtin.package:
     name:
       - labwc
-      # Terminal emulator
-      - alacritty
-      # Display configuration
-      - kanshi
       # Desktop background
       - swaybg
       # Screen power
@@ -17,12 +13,22 @@
       # Screen capture
       - grim
       - slurp
-      # Notifications
-      - mako
-      # Shit I don't know about
+      # Shit I don't know enough about
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
     state: present
+
+- name: Configure apps
+  loop:
+    - alacritty
+    - kanshi
+    - mako
+    # As of Oct '26, all other Wayland-native options worked like crap when I
+    # tried them.
+    - xfce4-panel
+  loop_control:
+    loop_var: labwc_app
+  ansible.builtin.include_tasks: '{{ labwc_app }}.yml'
 
 - name: Create ~/.config/labwc
   ansible.builtin.file:
@@ -43,12 +49,3 @@
     owner: '{{ ansible_user }}'
     group: '{{ ansible_user }}'
     mode: '0644'
-
-- name: Configure alacritty
-  ansible.builtin.import_tasks: alacritty.yml
-
-- name: Configure kanshi
-  ansible.builtin.import_tasks: kanshi.yml
-
-- name: Configure mako
-  ansible.builtin.import_tasks: mako.yml

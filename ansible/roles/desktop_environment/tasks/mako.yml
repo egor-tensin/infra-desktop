@@ -1,3 +1,9 @@
+- name: Install mako
+  become: true
+  ansible.builtin.package:
+    name: mako
+    state: present
+
 - name: Create ~/.config/mako
   ansible.builtin.file:
     path: ~/.config/mako
