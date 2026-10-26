@@ -1,5 +1,5 @@
 dependencies:
-  - role: makepkg
+  - role: tensin.infra.makepkg_debug
   - role: tensin.infra.pacman
   - role: tensin.infra.reflector
   - role: tensin.infra.paccache
