@@ -47,17 +47,10 @@
     mode: '0644'
   notify: reboot
 
-- name: Clone labwc-artwork
+- name: Clone labwc-themes
   ansible.builtin.git:
-    repo: 'https://github.com/labwc/labwc-artwork.git'
-    dest: ~/.config/labwc/labwc-artwork
+    repo: 'https://github.com/labwc/labwc-themes.git'
+    dest: ~/.local/share/themes
     version: HEAD
     accept_hostkey: true
-
-- name: Create symlink to labwc-artwork
-  ansible.builtin.file:
-    src: .config/labwc/labwc-artwork/themes
-    dest: ~/.themes
-    state: link
-    owner: '{{ ansible_user }}'
-    group: '{{ ansible_user }}'
+  notify: reboot
