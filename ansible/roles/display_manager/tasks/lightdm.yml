@@ -43,16 +43,8 @@
         groups: [autologin]
         name: '{{ ansible_user }}'
 
-    - name: Create LightDM override directory
-      ansible.builtin.file:
-        path: /etc/lightdm/lightdm.conf.d
-        state: directory
-        owner: root
-        group: root
-        mode: '0755'
-
     - name: Create LightDM override file
-      ansible.builtin.template:
+      tensin.infra.template:
         src: lightdm.conf.j2
         dest: /etc/lightdm/lightdm.conf.d/autologin.conf
         owner: root

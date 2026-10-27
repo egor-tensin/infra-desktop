@@ -33,13 +33,19 @@
     loop_var: labwc_app
   ansible.builtin.include_tasks: '{{ labwc_app }}.yml'
 
-- name: Create ~/.config/labwc
-  ansible.builtin.file:
-    path: ~/.config/labwc
-    state: directory
+- name: Configure labwc
+  loop:
+    - autostart
+    - environment
+    - rc.xml
+    - shutdown
+  tensin.infra.template:
+    src: 'labwc/{{ item }}.j2'
+    dest: '~/.config/labwc/{{ item }}'
     owner: '{{ ansible_user }}'
     group: '{{ ansible_user }}'
-    mode: '0755'
+    mode: '0644'
+  notify: reboot
 
 - name: Clone labwc-artwork
   ansible.builtin.git:
@@ -55,17 +61,3 @@
     state: link
     owner: '{{ ansible_user }}'
     group: '{{ ansible_user }}'
-
-- name: Configure labwc
-  loop:
-    - autostart
-    - environment
-    - rc.xml
-    - shutdown
-  ansible.builtin.template:
-    src: 'labwc/{{ item }}.j2'
-    dest: '~/.config/labwc/{{ item }}'
-    owner: '{{ ansible_user }}'
-    group: '{{ ansible_user }}'
-    mode: '0644'
-  notify: reboot

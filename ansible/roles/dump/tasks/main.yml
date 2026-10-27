@@ -11,23 +11,13 @@
 
 - name: Docker depends on /mnt/dump
   become: true
-  block:
-    - name: Create override directory
-      ansible.builtin.file:
-        path: /etc/systemd/system/docker.service.d
-        state: directory
-        owner: root
-        group: root
-        mode: '0755'
-
-    - name: Create override file
-      ansible.builtin.template:
-        src: dump_depends.conf.j2
-        dest: /etc/systemd/system/docker.service.d/dump_depends.conf
-        owner: root
-        group: root
-        mode: '0644'
-      notify: systemd_reload
+  tensin.infra.template:
+    src: dump_depends.conf.j2
+    dest: /etc/systemd/system/docker.service.d/dump_depends.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: systemd_reload
 
 - name: Run handlers if neccessary
   ansible.builtin.meta: flush_handlers

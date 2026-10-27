@@ -1,10 +1,12 @@
 - name: Install udiskie
   become: true
   ansible.builtin.package:
-    name: udiskie
+    name:
+      - udisks2
+      - udiskie
     state: present
 
-- name: Configure udiskie
+- name: Configure udisks2
   loop:
     - src: udiskie/mount_options.conf.j2
       dest: /etc/udisks2/mount_options.conf
@@ -18,5 +20,17 @@
     dest: '{{ item.dest }}'
     owner: root
     group: root
+    mode: '0644'
+  notify: reboot
+
+- name: Configure udiskie
+  loop:
+    - src: udiskie/config.yml.j2
+      dest: ~/.config/udiskie/config.yml
+  tensin.infra.template:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
     mode: '0644'
   notify: reboot

@@ -9,18 +9,7 @@
       - xfce4-whiskermenu-plugin
     state: present
 
-- name: Create .config directories
-  loop:
-    - ~/.config/xfce4/panel
-    - ~/.config/xfce4/xfconf/xfce-perchannel-xml
-  ansible.builtin.file:
-    path: '{{ item }}'
-    state: directory
-    owner: '{{ ansible_user }}'
-    group: '{{ ansible_user }}'
-    mode: '0755'
-
-- name: Create .config files
+- name: Configure xfce4-panel
   loop:
     - src: xfce4-panel/battery.rc.j2
       # The actual file name should end with "-ID", where "ID" is the plugin ID
@@ -28,7 +17,7 @@
       dest: ~/.config/xfce4/panel/battery-6.rc
     - src: xfce4-panel/xfce4-panel.xml.j2
       dest: ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
-  ansible.builtin.template:
+  tensin.infra.template:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
     owner: '{{ ansible_user }}'

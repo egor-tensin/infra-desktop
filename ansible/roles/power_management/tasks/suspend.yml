@@ -1,23 +1,14 @@
 - name: Configure systemd-logind
   become: true
-  block:
-    - name: Create override directory
-      ansible.builtin.file:
-        path: /etc/systemd/logind.conf.d
-        state: directory
-        owner: root
-        group: root
-        mode: '0755'
+  tensin.infra.template:
+    src: suspend.conf.j2
+    dest: /etc/systemd/logind.conf.d/suspend.conf
+    owner: root
+    group: root
+    mode: '0644'
+  register: logind_configured
 
-    - name: Create override file
-      ansible.builtin.template:
-        src: suspend.conf.j2
-        dest: /etc/systemd/logind.conf.d/suspend.conf
-        owner: root
-        group: root
-        mode: '0644'
-      register: logind_configured
-
-    - name: Reboot
-      when: logind_configured is changed
-      ansible.builtin.reboot:
+- name: Reboot
+  become: true
+  when: logind_configured is changed
+  ansible.builtin.reboot:
