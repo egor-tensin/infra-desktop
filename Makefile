@@ -3,6 +3,10 @@ include prelude.mk
 .PHONY: all
 all: maintenance
 
+ifndef ANSIBLE_VAULT_PASSWORD
+$(error Please execute `source setenv.sh` first)
+endif
+
 .PHONY: deps
 deps:
 	@echo
