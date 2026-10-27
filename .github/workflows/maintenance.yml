@@ -9,6 +9,8 @@ on:
         default: all
         required: false
 
+permissions: {}
+
 jobs:
   maintenance:
     name: Maintenance
@@ -16,21 +18,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Set up WireGuard
         uses: egor-tensin/setup-wireguard@v1
         with:
-          endpoint: '${{ secrets.WG_ENDPOINT }}'
-          endpoint_public_key: '${{ secrets.WG_ENDPOINT_PUBLIC }}'
-          ips: '${{ secrets.WG_IPS }}'
-          allowed_ips: '${{ secrets.WG_ALLOWED_IPS }}'
-          private_key: '${{ secrets.WG_PRIVATE }}'
-          preshared_key: '${{ secrets.WG_PRESHARED }}'
+          endpoint: ${{ secrets.WG_ENDPOINT }}
+          endpoint_public_key: ${{ secrets.WG_ENDPOINT_PUBLIC }}
+          ips: ${{ secrets.WG_IPS }}
+          allowed_ips: ${{ secrets.WG_ALLOWED_IPS }}
+          private_key: ${{ secrets.WG_PRIVATE }}
+          preshared_key: ${{ secrets.WG_PRESHARED }}
       - name: Set up ssh-agent
         uses: webfactory/ssh-agent@v0.10.0
         with:
-          ssh-private-key: '${{ secrets.SSH_KEY }}'
+          ssh-private-key: ${{ secrets.SSH_KEY }}
       - name: Run maintenance
         env:
-          ANSIBLE_VAULT_PASSWORD: '${{ secrets.ANSIBLE_VAULT_PASSWORD }}'
+          LIMIT: ${{ inputs.limit }}
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
         run: |
-          make maintenance 'LIMIT=${{ inputs.limit }}'
+          make maintenance
