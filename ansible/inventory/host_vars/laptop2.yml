@@ -1,7 +1,5 @@
-# Keep it enabled for Jellyfin, qBittorrent, etc.
-docker_enable_service: true
-
 # It's a "server", so running always:
+docker_enable_service: true
 power_management_suspend_on_external: false
 
 my_workspace_projects:
