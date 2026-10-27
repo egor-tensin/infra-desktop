@@ -1,7 +1,8 @@
 - name: Maintenance
   hosts: all
   gather_facts: false
-
+  var_files:
+    - var/vault.yml
   roles:
     - tensin.infra.arch_linux
     - tensin.infra.my_dotfiles
