@@ -30,5 +30,7 @@ jobs:
         with:
           ssh-private-key: '${{ secrets.SSH_KEY }}'
       - name: Run maintenance
+        env:
+          ANSIBLE_VAULT_PASSWORD: '${{ secrets.ANSIBLE_VAULT_PASSWORD }}'
         run: |
           make maintenance 'LIMIT=${{ inputs.limit }}'
