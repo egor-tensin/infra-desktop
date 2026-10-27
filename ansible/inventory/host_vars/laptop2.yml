@@ -10,13 +10,13 @@ wireguard_private_key: '${{ laptop2.wg.private_key }}'
 wireguard_addr4: '{{ wireguard_prefix4 }}.2/24'
 wireguard_addr6: '{{ wireguard_prefix6 }}.2/48'
 wireguard_peers:
-  - public_key: YByJZb0SltMEdThLg2eiecyFfwGDw1nlapTPwURYxTM=
+  - public_key: hMKs36wq+gnp6fVIIgGRVL42q78+Rnj/3RCEWGA69Bs=
     preshared_key: '${{ laptop2.wg.psk.vpn }}'
     endpoint: vpn.tensin.name:443
     allowed_ips: ['{{ wireguard_prefix4 }}.0/24', '{{ wireguard_prefix6 }}.0/48']
     persistent_keepalive: 25
 wireguard_peers_ru:
-  - public_key: ngmygNKbFJm9dnujxmlZesYo6LcML9oKZeDCbn7aAlI=
+  - public_key: XW2gwuu1pVYe4cXuk32jsgvqstx7Yd0/hj3hefRzaXQ=
     preshared_key: '${{ laptop2.wg.psk.vpn_ru }}'
     endpoint: vpn-ru.tensin.name:443
     persistent_keepalive: 25
