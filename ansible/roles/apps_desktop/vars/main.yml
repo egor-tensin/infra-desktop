@@ -9,4 +9,5 @@ apps_desktop_packages:
   - firefox
   - keepassxc
   - qbittorrent
+  - rpi-imager
   - telegram-desktop

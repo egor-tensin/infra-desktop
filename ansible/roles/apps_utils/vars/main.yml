@@ -19,6 +19,7 @@ apps_utils_packages:
   - vim
   - wget
   - whois
+  - wireguard-tools
   - xclip
   - xsel
   - zip
