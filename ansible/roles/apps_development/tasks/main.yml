@@ -1,3 +1,4 @@
 - ansible.builtin.import_tasks: aws.yml
 - ansible.builtin.import_tasks: doctl.yml
+- ansible.builtin.import_tasks: gh.yml
 - ansible.builtin.import_tasks: yc.yml
