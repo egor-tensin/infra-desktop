@@ -4,6 +4,8 @@ It uses .local hostname resolution.
 
 Assumptions about the archinstall run:
 
+* Unified Kernel Images were turned off in the bootloader settings,
+* pipewire was installed,
 * openssh was installed,
 * NetworkManager & systemd-boot are used,
 * a regular user with sudo rights was created.

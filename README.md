@@ -1,7 +1,7 @@
 infra-metal
 ===========
 
-Trying to make my setups fully automated on bare metal machines.
+Trying to make my setups fully automated on bare metal, desktop machines.
 
 Prerequisites
 -------------
