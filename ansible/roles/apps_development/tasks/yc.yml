@@ -1,0 +1,33 @@
+- name: Configure Yandex.Cloud CLI
+  block:
+    - name: Create configuration directory
+      ansible.builtin.file:
+        path: ~/.config/yandex-cloud
+        state: directory
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0700'
+
+    - name: Read config.yaml
+      tensin.infra.read_file:
+        path: ~/.config/yandex-cloud/config.yaml
+        default: '{}'
+      register: orig_content
+
+    - name: Write config.yaml
+      no_log: true
+      ansible.builtin.copy:
+        dest: ~/.config/yandex-cloud/config.yaml
+        content: "{{ new | to_nice_yaml(indent=2, default_style='|') }}"
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0600'
+      vars:
+        orig: '{{ orig_content.content | from_yaml }}'
+        orig_profiles: '{{ orig.profiles | default({}) }}'
+        infra_profile:
+          infra:
+            service-account-key: '{{ infra.yandex_cloud.profile | from_json }}'
+        new_profiles:
+          profiles: '{{ orig_profiles | combine(infra_profile) }}'
+        new: '{{ orig | combine(new_profiles) }}'

@@ -1,0 +1,35 @@
+- name: Configure AWS CLI
+  block:
+    - name: Create configuration directory
+      ansible.builtin.file:
+        path: ~/.aws
+        state: directory
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0755'
+
+    - name: Set up infra profile
+      # Even the supposedly "hidden" values from the vault are shown as loop
+      # items.
+      no_log: true
+      loop:
+        - file: ~/.aws/config
+          section: profile infra
+          option: region
+          value: eu-central-1
+        - file: ~/.aws/credentials
+          section: infra
+          option: aws_access_key_id
+          value: '{{ infra.aws.key_id }}'
+        - file: ~/.aws/credentials
+          section: infra
+          option: aws_secret_access_key
+          value: '{{ infra.aws.access_key }}'
+      community.general.ini_file:
+        path: '{{ item.file }}'
+        section: '{{ item.section }}'
+        option: '{{ item.option }}'
+        value: '{{ item.value }}'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0600'

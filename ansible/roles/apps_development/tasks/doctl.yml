@@ -1,0 +1,32 @@
+- name: Configure DigitalOcean CLI
+  block:
+    - name: Create configuration directory
+      ansible.builtin.file:
+        path: ~/.config/doctl
+        state: directory
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0755'
+
+    - name: Read config.yaml
+      tensin.infra.read_file:
+        path: ~/.config/doctl/config.yaml
+        default: '{}'
+      register: orig_content
+
+    - name: Write config.yaml
+      no_log: true
+      ansible.builtin.copy:
+        dest: ~/.config/doctl/config.yaml
+        content: '{{ new | to_nice_yaml(indent=2) }}'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0600'
+      vars:
+        orig: '{{ orig_content.content | from_yaml }}'
+        orig_contexts: "{{ orig['auth-contexts'] | default({}) }}"
+        infra_context:
+          infra: '{{ infra.digitalocean.token }}'
+        new_contexts:
+          auth-contexts: '{{ orig_contexts | combine(infra_context) }}'
+        new: '{{ orig | combine(new_contexts) }}'
