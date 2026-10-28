@@ -13,6 +13,8 @@
       # Screen capture
       - grim
       - slurp
+      # Utilities
+      - wl-clipboard
       # Shit I don't know enough about
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
