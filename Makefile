@@ -24,8 +24,8 @@ init: deps
 	@echo -----------------------------------------------------------------
 	@echo ansible-playbook
 	@echo -----------------------------------------------------------------
-	@cd -- init/ && \
-		ansible-playbook --ask-become-pass --limit '$(call escape,$(LIMIT))' playbook.yml
+	@cd -- ansible/ && \
+		ansible-playbook --limit '$(call escape,$(LIMIT))' -i inventory-init --ask-become-pass playbook-init.yml
 
 .PHONY: configure
 configure: deps

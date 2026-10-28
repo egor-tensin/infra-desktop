@@ -1,7 +1,9 @@
 - name: Maintenance
   hosts: all
   gather_facts: false
-
+  vars_files:
+    - vars/vault.yml
   roles:
     - tensin.infra.sudo
     - archinstall_cleanup
+    - networking

@@ -1,4 +1,5 @@
-This playbook is supposed to be run right after archinstall finishes.
+The playbook-init.yml playbook is supposed to be run right after archinstall
+finishes.
 It uses .local hostname resolution.
 
 Assumptions about the archinstall run:

@@ -1,16 +1,23 @@
 dependencies:
   - role: tensin.infra.wireguard
     vars:
-      wireguard_name: vpn
-      wireguard_autoconnect: true
-  - role: tensin.infra.wireguard
-    vars:
       wireguard_name: vpn_ger
-      wireguard_tunnel_everything: true
       wireguard_autoconnect: false
+      wireguard_peers: '{{ wireguard_peers_ger }}'
   - role: tensin.infra.wireguard
     vars:
       wireguard_name: vpn_rus
+      wireguard_autoconnect: true
+      wireguard_peers: '{{ wireguard_peers_rus }}'
+  - role: tensin.infra.wireguard
+    vars:
+      wireguard_name: vpn_ger_all
       wireguard_tunnel_everything: true
       wireguard_autoconnect: false
-      wireguard_peers: '{{ wireguard_peers_ru }}'
+      wireguard_peers: '{{ wireguard_peers_ger }}'
+  - role: tensin.infra.wireguard
+    vars:
+      wireguard_name: vpn_rus_all
+      wireguard_tunnel_everything: true
+      wireguard_autoconnect: false
+      wireguard_peers: '{{ wireguard_peers_rus }}'

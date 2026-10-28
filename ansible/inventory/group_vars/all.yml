@@ -20,3 +20,4 @@ my_workspace_git_email: '{{ my_email }}'
 wireguard_backend: NetworkManager
 wireguard_prefix4: '192.168.205'
 wireguard_prefix6: 'fd9d:bc11:4021::192.168.205'
+wireguard_allowed_ips: ['{{ wireguard_prefix4 }}.0/24', '{{ wireguard_prefix6 }}.0/48']

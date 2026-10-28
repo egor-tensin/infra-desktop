@@ -2,12 +2,5 @@ laptop2	ansible_host=tensin-laptop2.local
 pc2	ansible_host=tensin-pc2.local
 laptop3	ansible_host=tensin-laptop3.local
 
-[laptops]
-laptop2
-laptop3
-
-[pcs]
-pc2
-
 [all:vars]
 ansible_user=egor

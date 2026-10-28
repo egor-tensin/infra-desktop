@@ -8,8 +8,8 @@ Prerequisites
 
 * Arch Linux installed with archinstall.
     * Only basic things should be set up with it, so its fast to do & redo.
-    * See [init/README.md](init/README.md) for more details, it _does_ require
-some manual steps after installation.
+    * See [ansible/README.init.md](ansible/README.init.md) for more details, it
+_does_ require some manual steps after installation.
     * TODO: save my archinstall configs here somewhere.
 * `ssh-copy-id` your key to the target machines for `make init`.
 * Ansible installed on the controller.
