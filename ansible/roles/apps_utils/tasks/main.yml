@@ -1,7 +1,21 @@
-# TODO: figure this out?
-#- name: Enable ssh-agent socket
-#  ansible.builtin.systemd_service:
-#    scope: user
-#    name: ssh-agent.socket
-#    enabled: true
-#    state: started
+# Might not be the best ssh-agent activation method, since it requires setting
+# a user environment variable somewhere globally, but for now, I'm sticking
+# with it.
+# https://wiki.archlinux.org/title/SSH_keys#Start_ssh-agent_with_systemd_user
+
+# Not using ansible.builtin.systemd_service, because it requires a login
+# session or whatever, and doesn't seem to work unless I'm actually logged
+# in.
+- name: Create systemd user directory
+  ansible.builtin.file:
+    path: ~/.config/systemd/user/sockets.target.wants
+    state: directory
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0755'
+
+- name: Enable ssh-agent.socket
+  ansible.builtin.file:
+    src: /usr/lib/systemd/user/ssh-agent.socket
+    dest: ~/.config/systemd/user/sockets.target.wants/ssh-agent.socket
+    state: link
