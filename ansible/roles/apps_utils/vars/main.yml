@@ -53,6 +53,16 @@ apps_utils_packages:
   - ttf-dejavu
   - ttf-liberation
 
+  # TexLive:
+  - texlive-plaingeneric
+  - texlive-latexextra
+  - texlive-latexrecommended
+  - texlive-langcyrillic
+  - texlive-langenglish
+  - texlive-fontsrecommended
+  - texlive-mathscience
+  # This list is non-exhaustive; this just suffices to build my own TexLive documents.
+
 apps_utils_aur:
   - config-links
   - yay
