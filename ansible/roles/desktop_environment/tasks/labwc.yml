@@ -15,9 +15,6 @@
       - slurp
       # Utilities
       - wl-clipboard
-      # Shit I don't know enough about
-      - xdg-desktop-portal-gtk
-      - xdg-desktop-portal-wlr
     state: present
   notify: reboot
 
@@ -28,6 +25,7 @@
     - mako
     - themes
     - udiskie
+    - xdg-desktop-portal
     # As of Oct '26, all other Wayland-native options worked like crap when I
     # tried them.
     - xfce4-panel

@@ -1,0 +1,7 @@
+{{ ansible_managed | comment }}
+
+[screencast]
+# Without a chooser configured, things like screen recording in OBS don't work
+# for me.
+chooser_type=simple
+chooser_cmd=slurp -f 'Monitor: %o' -or
