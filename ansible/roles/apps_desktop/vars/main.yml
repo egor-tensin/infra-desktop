@@ -8,6 +8,7 @@ apps_desktop_packages:
   # Actual apps:
   - firefox
   - keepassxc
+  - obs-studio
   - qbittorrent
   - rpi-imager
   - telegram-desktop
