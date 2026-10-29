@@ -1,6 +1,12 @@
 {{ ansible_managed | comment }}
 
-udiskie > /dev/null 2>&1 &
+# udiskie doesn't seem to respect the "flat" menu option on Wayland, at least:
+# https://github.com/coldfix/udiskie/issues/270
+# The --no-menu-checkbox-workaround thing is just in case.
+udiskie \
+    --no-menu-checkbox-workaround \
+    --no-menu-update-workaround \
+    > /dev/null 2>&1 &
 
 kanshi > /dev/null 2>&1 &
 
