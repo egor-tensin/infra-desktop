@@ -16,7 +16,9 @@ apps_development_packages:
   - git
   - lcov
   - llvm
+  - meson
   - mingw-w64
+  - ninja
   - perf
   - pyenv
   - rbenv
