@@ -10,5 +10,6 @@ apps_desktop_packages:
   - keepassxc
   - obs-studio
   - qbittorrent
+  - ristretto
   - rpi-imager
   - telegram-desktop

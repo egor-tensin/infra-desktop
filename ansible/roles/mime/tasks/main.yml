@@ -1,7 +1,0 @@
-- name: Configure application
-  loop:
-    # Really tired of browsers for some reason taking over my images.
-    - org.xfce.ristretto
-  loop_control:
-    loop_var: app
-  ansible.builtin.include_tasks: application.yml
