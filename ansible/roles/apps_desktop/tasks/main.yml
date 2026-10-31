@@ -1,10 +1,8 @@
-- name: Configure MIME associations
-  ansible.builtin.import_tasks: mime.yml
-
 - name: Configure apps
   loop:
     - mpv
     - celluloid
+    - ristretto
   loop_control:
     loop_var: apps_desktop_app
   ansible.builtin.include_tasks: '{{ apps_desktop_app }}.yml'

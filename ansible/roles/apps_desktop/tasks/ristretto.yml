@@ -1,3 +1,9 @@
+- name: Install Ristretto
+  become: true
+  ansible.builtin.package:
+    name: ristretto
+    state: present
+
 - name: Configure MIME associations
   ansible.builtin.import_role:
     name: tensin.infra.mime

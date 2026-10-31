@@ -1,16 +1,16 @@
 apps_desktop_packages:
+  # More of a helper things:
   # https://wiki.archlinux.org/title/Wayland#Qt
   - qt5-wayland
   - qt6-wayland
   # List outputs & configure them:
   - wlr-randr
 
-  # Actual apps:
-  - celluloid
+  # Actual apps (factor out into tasks/ if more elaborate configuration is
+  # required):
   - firefox
   - keepassxc
   - obs-studio
   - qbittorrent
-  - ristretto
   - rpi-imager
   - telegram-desktop
