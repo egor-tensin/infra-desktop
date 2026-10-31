@@ -1,1 +1,1 @@
-power_management_suspend_on_external: true
+power_management_is_server: false

@@ -2,5 +2,5 @@
 
 [Login]
 HandleLidSwitch=suspend
-HandleLidSwitchExternalPower={{ power_management_suspend_on_external | ternary('suspend', 'ignore') }}
+HandleLidSwitchExternalPower={{ power_management_is_server | ternary('ignore', 'suspend') }}
 HandlePowerKey=suspend

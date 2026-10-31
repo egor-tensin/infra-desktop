@@ -13,8 +13,12 @@ kanshi > /dev/null 2>&1 &
 swaybg -c '#334455' > /dev/null 2>&1 &
 
 swayidle -w \
-    timeout 300 'wlopm --off \*' \
+    timeout 180 'wlopm --off \*' \
     resume 'wlopm --on \*' \
+{% if not power_management_is_server %}
+    timeout 295 "notify-send 'Going to suspend'" \
+    timeout 300 'systemctl suspend' \
+{% endif %}
     > /dev/null 2>&1 &
 
 # mako (the notification service) has a preset-enabled user service, so I don't

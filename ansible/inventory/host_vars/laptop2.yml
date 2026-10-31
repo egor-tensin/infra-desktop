@@ -1,6 +1,6 @@
 # It's a "server", so running always:
 docker_enable_service: true
-power_management_suspend_on_external: false
+power_management_is_server: true
 
 my_workspace_projects:
   - url: 'ssh://git@altssh.bitbucket.org:443/egor-tensin/server-tensin-laptop2.git'
