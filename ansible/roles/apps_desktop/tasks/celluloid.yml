@@ -1,0 +1,26 @@
+- name: Install Celluloid
+  become: true
+  ansible.builtin.package:
+    name: celluloid
+    state: present
+
+- name: Install module dependencies
+  become: true
+  ansible.builtin.package:
+    name:
+      # community.general.dconf depends on these:
+      - python-gobject
+      - python-psutil
+    state: present
+
+- name: Configure Celluloid
+  loop:
+    - key: /io/github/celluloid-player/celluloid/mpv-config-enable
+      value: true
+    - key: /io/github/celluloid-player/celluloid/mpv-config-file
+      value: |-
+        'file:///home/{{ ansible_user }}/.config/mpv/mpv.conf'
+  community.general.dconf:
+    key: '{{ item.key }}'
+    value: '{{ item.value }}'
+    state: present

@@ -6,6 +6,7 @@ apps_desktop_packages:
   - wlr-randr
 
   # Actual apps:
+  - celluloid
   - firefox
   - keepassxc
   - obs-studio

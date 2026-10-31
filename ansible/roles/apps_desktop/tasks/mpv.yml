@@ -1,0 +1,13 @@
+- name: Install mpv
+  become: true
+  ansible.builtin.package:
+    name: mpv
+    state: present
+
+- name: Configure mpv
+  tensin.infra.template:
+    src: mpv/mpv.conf.j2
+    dest: ~/.config/mpv/mpv.conf
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0600'

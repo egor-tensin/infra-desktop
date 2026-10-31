@@ -1,7 +1,10 @@
 - name: Configure MIME associations
-  ansible.builtin.import_role:
-    name: tensin.infra.mime
-  vars:
-    mime_apps:
-      # Really tired of browsers for some reason taking over my images.
-      - org.xfce.ristretto
+  ansible.builtin.import_tasks: mime.yml
+
+- name: Configure apps
+  loop:
+    - mpv
+    - celluloid
+  loop_control:
+    loop_var: apps_desktop_app
+  ansible.builtin.include_tasks: '{{ apps_desktop_app }}.yml'
