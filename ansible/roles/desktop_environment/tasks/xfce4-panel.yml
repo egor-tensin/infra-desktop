@@ -14,7 +14,7 @@
     - src: xfce4-panel/battery.rc.j2
       # The actual file name should end with "-ID", where "ID" is the plugin ID
       # in xfce4-panel.xml; this is moronic, but what are you gonna do.
-      dest: ~/.config/xfce4/panel/battery-6.rc
+      dest: ~/.config/xfce4/panel/battery-5.rc
     - src: xfce4-panel/xfce4-panel.xml.j2
       dest: ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
   tensin.infra.template:
