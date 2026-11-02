@@ -6,6 +6,13 @@
       - xdg-desktop-portal-wlr
       # Used by the -wlr backend for screen selection (e.g. in OBS):
       - slurp
+      # From the wiki:
+      #     > Since xdg-mime relies on perl-file-mimeinfo package to implement
+      #     > the XDG MIME Applications standard, if you are not using a
+      #     > desktop environment, you should either install perl-file-mimeinfo,
+      #     > or consider a different resource opener.
+      # Basically, xdg-open doesn't work properly without this.
+      - perl-file-mimeinfo
     state: present
 
 - name: Configure xdg-desktop-portal-wlr
