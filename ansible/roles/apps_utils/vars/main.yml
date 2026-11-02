@@ -64,5 +64,6 @@ apps_utils_packages:
   # This list is non-exhaustive; this just suffices to build my own TexLive documents.
 
 apps_utils_aur:
+  - ca-certificates-russian-root
   - config-links
   - yay
