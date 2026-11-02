@@ -8,3 +8,4 @@ dependencies:
   - role: tensin.infra.docker
     vars:
       docker_add_to_group: true
+      docker_logging_driver: local
