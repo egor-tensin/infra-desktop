@@ -20,6 +20,8 @@
     - key: /io/github/celluloid-player/celluloid/mpv-config-file
       value: |-
         'file:///home/{{ ansible_user }}/.config/mpv/mpv.conf'
+    - key: /io/github/celluloid-player/celluloid/autofit-enable
+      value: false
   community.general.dconf:
     key: '{{ item.key }}'
     value: '{{ item.value }}'
