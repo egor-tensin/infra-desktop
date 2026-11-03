@@ -1,10 +1,11 @@
 dependencies:
-  - role: tensin.infra.pacman_install
+  - role: tensin.infra.install
     vars:
-      pacman_install_packages: '{{ apps_development_packages }}'
-  - role: tensin.infra.aur_install
+      install_packages: '{{ apps_development_packages }}'
+  - role: tensin.infra.install
     vars:
-      aur_install_packages: '{{ apps_development_aur }}'
+      install_packages: '{{ apps_development_aur }}'
+      install_backend: yay
   - role: tensin.infra.docker
     vars:
       docker_add_to_group: true

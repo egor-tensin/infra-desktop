@@ -1,7 +1,8 @@
 dependencies:
-  - role: tensin.infra.pacman_install
+  - role: tensin.infra.install
     vars:
-      pacman_install_packages: '{{ apps_utils_packages }}'
-  - role: tensin.infra.aur_install
+      install_packages: '{{ apps_utils_packages }}'
+  - role: tensin.infra.install
     vars:
-      aur_install_packages: '{{ apps_utils_aur }}'
+      install_packages: '{{ apps_utils_aur }}'
+      install_backend: yay

@@ -1,4 +1,4 @@
 dependencies:
-  - role: tensin.infra.pacman_install
+  - role: tensin.infra.install
     vars:
-      pacman_install_packages: '{{ apps_desktop_packages }}'
+      install_packages: '{{ apps_desktop_packages }}'
