@@ -37,6 +37,7 @@ apps_utils_packages:
   - moreutils
   - nnn
   - ntfs-3g
+  - nvtop
   - os-prober
   - pacman-contrib
   - parted
