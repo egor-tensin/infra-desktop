@@ -1,6 +1,8 @@
 apps_utils_packages:
   # Core:
   - 7zip
+  - bind
+  # ^^^ for dig
   - dash
   - inetutils
   - lsof
