@@ -6,7 +6,6 @@ sudo_env:
   - EDITOR
   - SSH_AUTH_SOCK
 
-linux_sudo: true
 journald_log_level: info
 kernel_flavour: lts
 kernel_bootloader: systemd-boot

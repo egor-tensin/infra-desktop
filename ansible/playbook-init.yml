@@ -5,5 +5,4 @@
     - vars/vault.yml
   roles:
     - tensin.infra.sudo
-    - archinstall_cleanup
     - networking
