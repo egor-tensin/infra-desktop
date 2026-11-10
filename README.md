@@ -29,11 +29,3 @@ This should run the main playbook, setting up everything:
     make config
 
 After everything is set up, maintenance can be done via the GitHub workflow.
-
-License
--------
-
-Distributed under the MIT License.
-See [LICENSE.txt] for details.
-
-[LICENSE.txt]: LICENSE.txt
