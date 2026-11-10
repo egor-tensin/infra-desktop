@@ -3,20 +3,6 @@ infra-desktop
 
 Trying to make setup fully automated on my desktop machines.
 
-Goal
-----
-
-Make my desktop setups more-or-less fully automated.
-That means, I can do `archinstall` (configs TBD) on any of my machines, then
-
-    make init LIMIT=target
-
-and after that,
-
-    make config
-
-should not depend on anything external.
-
 Prerequisites
 -------------
 
