@@ -3,6 +3,7 @@
     - mpv
     - celluloid
     - ristretto
+    - zathura
   loop_control:
     loop_var: apps_desktop_app
   ansible.builtin.include_tasks: '{{ apps_desktop_app }}.yml'

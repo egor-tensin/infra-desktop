@@ -1,0 +1,25 @@
+- name: Install zathura
+  become: true
+  ansible.builtin.package:
+    name:
+      - zathura
+      - zathura-cb
+      - zathura-djvu
+      - zathura-pdf-mupdf
+    state: present
+
+- name: Configure zathura
+  tensin.infra.template:
+    src: zathura/zathurarc.j2
+    dest: ~/.config/zathura/zathurarc
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0600'
+
+- name: Configure MIME types
+  ansible.builtin.import_role:
+    name: tensin.infra.mime
+  vars:
+    mime_app: org.pwmt.zathura
+    mime_types:
+      - application/pdf

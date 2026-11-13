@@ -8,6 +8,5 @@
   ansible.builtin.import_role:
     name: tensin.infra.mime
   vars:
-    mime_apps:
-      # Really tired of browsers for some reason taking over my images.
-      - org.xfce.ristretto
+    # Really tired of browsers for some reason taking over my images.
+    mime_app: org.xfce.ristretto
