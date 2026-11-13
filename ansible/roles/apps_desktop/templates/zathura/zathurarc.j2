@@ -1,5 +1,14 @@
 {{ ansible_managed | comment }}
 
+# Window width by default:
 set adjust-open width
-
+# An attempt to open links with a single (as opposed to double) click,
+# currently doesn't seem to be working?
+#     https://github.com/pwmt/zathura/issues/1063
+#set double-click-follow false
+# Remember positions:
+set open-first-page false
+# No, if I click it, it _does_ mean that I want to open it:
+set open-link-confirm false
+# Don't even know what the default does, some stupid thing probably:
 set selection-clipboard clipboard
