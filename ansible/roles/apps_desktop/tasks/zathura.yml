@@ -6,6 +6,9 @@
       - zathura-cb
       - zathura-djvu
       - zathura-pdf-mupdf
+      # Not sure what these do, but libmupdf requires at least one of these:
+      - tesseract-data-eng
+      - tesseract-data-rus
     state: present
 
 - name: Configure zathura
