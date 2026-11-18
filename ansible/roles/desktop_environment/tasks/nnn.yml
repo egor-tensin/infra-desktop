@@ -1,0 +1,17 @@
+- name: Create .desktop entry for directories
+  tensin.infra.template:
+    src: nnn/console-file-manager.desktop.j2
+    dest: ~/.local/share/applications/console-file-manager.desktop
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0644'
+
+- name: Associate directories with console file manager
+  ansible.builtin.import_role:
+    name: tensin.infra.mime
+  vars:
+    mime_app: console-file-manager
+    # TODO: fix the tensin.infra.mime role so that it can read supported MIME
+    # types from ~/.local/share as well.
+    mime_types:
+      - inode/directory
