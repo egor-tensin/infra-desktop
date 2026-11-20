@@ -9,6 +9,7 @@ apps_desktop_packages:
   # Actual apps (factor out into tasks/ if more elaborate configuration is
   # required):
   - firefox
+  - foliate
   - keepassxc
   - obs-studio
   - qbittorrent
